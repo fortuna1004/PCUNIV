@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+
+header form, header ul, header nav { display:none; }
+hgroup { border-bottom:5px solid #066; padding-bottom:4px; }
+.logo h2 { width:110px; font:10px  "NGothicEB", Gulim; color:#555; }
+
+#recomm_book { display:none; }
+#content { display:none;}
+footer.realfooter{ display:none; }
+
+.ie6 { font-size:100%; width:auto; height:auto; line-height:200%; position:static; padding-top:30px;}
+.ie6 strong { color:#c00;font-weight:bold;font-size:200%;}
+.ie6 p a { color:#066; font-weight:bold; text-decoration:underline; }
