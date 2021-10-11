@@ -19,37 +19,122 @@
 		.test_wrap table td {height:40px; font-size:14px; text-align:center; border-top:1px solid #eee; border-left:1px solid #eee;}
 		.test_wrap table td.all {background:#f4f4f4;}
 		.test_wrap table tfoot {border-top:1px solid #eee;}
+
+		p:hover {transform:rotate(-360deg);}
+		ol {width:100px; float:left; height:100px; overflow-y:auto; background-color:rgba(0,0,0,0.5); box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;}
+		ol > li {float:left; display:block;}
+		ol > li:first-child,  
+		ol > li:nth-child(4){clear:left; border:1px solid blue; box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;}
 	</style>
 </head>
 <body>
 	<div class="test_wrap">
-		<iframe src="https://www.pcu.ac.kr/www/index/index.html" frameborder="0" width="100%" height="500px" scrolling="yes" title="배재대 홈페이지">
+		<!-- <iframe src="https://www.pcu.ac.kr/www/index/index.html" frameborder="0" width="100%" height="500px" scrolling="yes" title="배재대 홈페이지">
 			<p>프레임이 표시되지 않는 분은 <a href="https://www.pcu.ac.kr/www/index/index.html">배재대 바로가기</a>를 클릭해 주세요.</p>
-		</iframe> 
+		</iframe>  -->
 
 		<video width="100%" height="300px" controls="controls" poster="../pr_630_20210717.jpeg">
 			<source src="../pr_630_20210717.mp4" type="video/mp4">
 			<track label="English subtitles" kind="subtitles" srclang="en" src="chrome_subtitles.vtt" default>
 		</video>
+		<p>안녕하세요 반갑습니다.</p>
+		<p>안녕하세요 반갑습니다.</p>
+		<p>안녕하세요 반갑습니다.</p>
+		<p>안녕하세요 반갑습니다.</p>
+
+		<ol reversed> 
+			<li>일</li>
+			<li>이</li>
+			<li>삼</li>
+			<li>사</li>
+			<li>사</li>
+			<li>사</li>
+			<li>사</li>
+			<li>사</li>
+			<li>사</li>
+			<li>사</li>
+		</ol>
+
+
 		<table class="col">
 			<caption> 테이블대한 제목이나 설명 입력 </caption>
 			<colgroup>
-				<col width=25% span="4">
+				<col width=20% span="2">
+				<col width=30% span="2">
 			</colgourp>
 			<thead>
 				<tr>
 					<th scope=“col”>제목1</th>
 					<th scope=“col”>제목2</th>
 					<th scope=“col”>제목3</th>
-					<th scope=“col”>제목3</th>
+					<th scope=“col”>제목4</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr> 
-					<td>내용1</td>
-					<td>내용1</td>
-					<td>내용1</td>
-					<td>내용1</td>
+					<td colspan="2" rowspan="2">
+						<input type="text" name="phone" id="phone" maxlength="3" size="3" title="휴대폰첫째자리" /> -
+						<input type="text" name="phone2" id="phone2" maxlength="4" size="4" title="휴대폰중간자리" /> -
+						<input type="text" name="phone3" id="phone3" maxlength="4" size="4" title="휴대폰끝자리" />
+					
+						<input name="receivecd" type="radio" id="receiveYes" value="Y" title="메일링 리스트 가입 여부"  checked/> 
+						<label for="receiveYes">예</label>
+						<input type="radio" name="receivecd" id="receiveNo" value="N" title="메일링 리스트 가입 여부" />
+						<label for="receiveNo">아니오</label>
+
+						<input type="text" name="phone" id="phone" maxlength="3" size="3" title="휴대폰첫째자리" /> -
+						<input type="text" name="phone2" id="phone2" maxlength="4" size="4" title="휴대폰중간자리" /> -
+						<input type="text" name="phone3" id="phone3" maxlength="4" size="4" title="휴대폰끝자리" />
+					
+						<input name="receivecd" type="radio" id="receiveYes" value="Y" title="메일링 리스트 가입 여부" /> 
+						<label for="receiveYes">예</label>
+						<input type="radio" name="receivecd" id="receiveNo" value="N" title="메일링 리스트 가입 여부" />
+						<label for="receiveNo">아니오</label>
+					</td>
+					<td>
+						<section>
+							<form action="survey.php" method="post" name="survey">
+							<label for="useBrowser">주로 사용하는 웹 브라우저</label><br>
+							<input placehoder="자주쓰는 브라우저 입력하세요." type="text" id="useBrowser" size="30" list="browser">
+							<datalist id="browser">
+								<option value="크롬" label="Google"></option>
+								<option value="파이어폭스" label="Mozilla"></option>
+								<option value="사파리" label="Apple"></option>
+								<option value="오페라" label="Opera"></option>
+								<option value="인터넷 익스플로러" label="MicroSoft"></option>
+							</datalist>
+							</form>
+						</section>
+					</td>
+					<td>
+						<fieldset oninput="total.value=parseInt(bar.value)">
+							<input id="bar" name="bar" type="range" title="범위선택"> 
+							<output name="total" title="선택한 범위 값">0</output>
+						</fieldset>
+					</td>
+				</tr>
+				<tr> 
+					<td>
+						<section>
+							<form action="survey.php" method="post" name="survey">
+							<label for="useBrowser">주로 사용하는 웹 브라우저</label><br>
+							<input type="text" id="useBrowser" size="30" list="browser">
+							<datalist id="browser">
+								<option value="크롬" label="Google"></option>
+								<option value="파이어폭스" label="Mozilla"></option>
+								<option value="사파리" label="Apple"></option>
+								<option value="오페라" label="Opera"></option>
+								<option value="인터넷 익스플로러" label="MicroSoft"></option>
+							</datalist>
+							</form>
+						</section>
+					</td>
+					<td>
+						<fieldset oninput="total.value=parseInt(bar.value)">
+							<input id="bar" name="bar" type="range" title="범위선택"> 
+							<output name="total" title="선택한 범위 값">0</output>
+						</fieldset>
+					</td>
 				</tr>
 			</tbody>
 			<tfoot>
@@ -69,11 +154,19 @@
 			<tbody>
 				<tr>
 					<th scope="row">제목1</th>
-					<td>내용1</td>
+					<td>
+						<label for="reservationDatetime">예약가능 일시</label>
+						<input type="number" min="0" max="10" >
+					</td>
 				</tr>
 				<tr>
 					<th scope="row">제목2</th>
-					<td>내용2</td>
+					<td>
+						<form action="formula.php" method="post" name="formula">
+							<label for="progress">작업 진행률</label>
+							<progress id="progress" value="0.55" max="1">55%</progress>
+						</form>
+					</td>
 				</tr>
 				<tr>
 					<th scope="row">제목3</th>
