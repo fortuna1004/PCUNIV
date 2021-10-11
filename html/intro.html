@@ -30,9 +30,7 @@
 		animation: animate 10s linear infinite;
 	}
 	@keyframes animate {
-		to{
-			background-position: 400%;
-		}
+		to{background-position: 400%;}
 	}
 	.visual {height:100%; display:flex;}
 	.introWrap {
@@ -45,8 +43,8 @@
 		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	}
 	.introBox {text-align:left; padding:10px; margin:25px 0; border:1px solid #aaa; height:350px; overflow:auto;}
-	.introBox p {margin-bottom:10px;}
 	.introBox a {color:blue; text-decoration:underline;}
+	.introBox p {margin-bottom:10px;}
 
 	.mySidenav a {
 		position: fixed;
@@ -74,6 +72,14 @@
 	.nav3 {
 	top: 140px;
 	background-color: #f44336;
+	}
+	#today {
+		bottom:20px; 
+		opacity:.4;
+		color:#fff;
+		font-size:18px; 
+		position:absolute; 
+		font-weight:normal;
 	}
 
 </style>
@@ -104,5 +110,29 @@
 		</div>
 		<!-- ///////////////// 소개내용 끝 ////////////////// -->
 	</div>
+	<div id="today"></div>
+	<script>
+		var clockTarget = document.getElementById("today");
+		function today() {
+			
+			var date = new Date();
+			var day = date.getDay();
+			var year = date.getYear();
+			var month = date.getMonth();
+			var hours = date.getHours();
+			var minutes = date.getMinutes();
+			var seconds = date.getSeconds();
+			var clockDate = date.getDate();
+			var week = ['일', '월', '화', '수', '목', '금', '토'];
+
+			clockTarget .innerText = `${year-100}${month+1}${clockDate}(${week[day]})` +
+			` ${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes }`  : minutes }:${seconds < 10 ? `0${seconds }`  : seconds }`;
+		}
+		function init() {
+			today();
+			setInterval(today, 1000);
+		}
+	init();
+	</script>
 </body>
 </html>
