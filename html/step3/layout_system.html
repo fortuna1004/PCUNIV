@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>풀스택개발자를 위한 웹퍼블리싱 | 배재대학교</title>
+	<script type="text/javascript" src="../../js/js.js" ></script>
+	<link rel="stylesheet" type="text/css" href="../../css/css.css" />
+	<script type="text/javascript" >
+
+		// -----------------  레프트토글  ----------------- //
+		jQuery(function($) {
+			$(".left_btn").click(function(){
+				$(".left").toggleClass('active')
+			});
+
+		});
+
+		// -----------------  리스트토글  ----------------- //
+		jQuery(function($) {
+			$(".toggle.open").hide();
+			$(".toggle > a").click(function(){
+		
+				var objNum = $(".toggle.open");
+				var objIdx= $(".toggle > a").index(this);
+		
+				for (i=0; i<objNum.length; i++ ){
+					if(i==objIdx){
+						$(objNum[objIdx]).slideToggle(300);
+					} else if (i!=objIdx){
+						$(objNum[i]).slideUp(300);
+					}
+				}
+			});
+		});
+
+		// -----------------  탭메뉴 ----------------- //
+		jQuery(function($) {
+			$(".tab dt > a").bind("focus click",function(e){
+		        var i = $('.tab dt > a').index(this);
+		        $(".box").hide();
+
+		        $(this).parent().next().show();
+				$('.tab dt > a').removeClass('on').eq(i).addClass('on');
+		    });
+		});
+
+		// -----------------  달력 ----------------- //
+		jQuery(function($) {
+			$.datepicker.setDefaults({
+				yearSuffix: '년',
+				prevText: '이전 달',
+				nextText: '다음 달',
+				monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+				monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+				dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+				dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+				dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+				buttonText:'날짜선택',
+				buttonImage:'button',
+				buttonImageOnly:true,
+				dateFormat: 'yy-mm-dd',
+				showMonthAfterYear: true,
+			});
+	
+		    $(".date").datepicker({
+		    	changeYear: true,
+		    	changeMonth: true,
+			});
+		});
+
+		// -----------------  레프트메뉴 ----------------- //
+		jQuery(function($) {
+			var lnbUI = {
+				click : function (target, speed) {
+				var _self = this,
+					$target = $(target);
+				_self.speed = speed || 300;
+				
+				$target.each(function(){
+					if(findChildren($(this))) {
+					return;
+					}
+					$(this).addClass('noDepth');
+				});
+				
+				function findChildren(obj) {
+					return obj.find('> ul').length > 0;
+				}
+				$target.on('click','a', function(e){
+					e.stopPropagation();
+
+					var $this = $(this),
+						$depthTarget = $this.next(),
+						$siblings = $this.parent().siblings();
+						$this.parent('li').find('ul li').removeClass('on');
+						$siblings.removeClass('on');
+						$siblings.find('ul').slideUp(250);
+					
+					if($depthTarget.css('display') == 'none') {
+						_self.activeOn($this);
+						$depthTarget.slideDown(_self.speed);
+					} else {
+						$depthTarget.slideUp(_self.speed);
+						_self.activeOff($this);
+					}	
+					})
+				},
+				activeOff : function($target) {$target.parent().removeClass('on');},
+				activeOn : function($target) {$target.parent().addClass('on');
+				}
+			};
+
+			$(function(){
+				lnbUI.click('.left li', 300)
+			});
+		});
+	</script>
+</head>
+<body class="system">
+	<header>
+		<h1 class="logo">로고</h1>
+		<nav class="menu">
+			<ul>
+				<li>메뉴1</li>
+				<li>메뉴2</li>
+				<li>메뉴3</li>
+				<li>메뉴4</li>
+			</ul>
+		</nav>
+	</header>
+	<div class="main_contents">
+		<nav class="left">
+			<span class="left_btn"></span>
+			<ul>
+				<li><a href="#">메뉴1</a>
+					<ul>
+						<li><a href="#">메뉴1-2</a>
+							<ul>
+								<li><a href="#">메뉴1-3</a></li>
+								<li><a href="#">메뉴1-3</a></li>
+							</ul>
+						</li>
+						<li><a href="#">메뉴1-2</a>
+							<ul>
+								<li><a href="#">메뉴1-3</a></li>
+								<li><a href="#">메뉴1-3</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li><a href="#">메뉴2</a>
+					<ul>
+						<li><a href="#">메뉴2-2</a>
+							<ul>
+								<li><a href="#">메뉴2-3</a></li>
+								<li><a href="#">메뉴2-3</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+		<div class="right">
+			<section class="top">
+				<div class="cont_1">
+					<dl class="tab">
+						<dt><a href="#">tab1</a></dt>
+						<dd class="box">내용1</dd>
+						<dt><a href="#">tab2</a></dt>
+						<dd class="box hide">내용2</dd>
+						<dt><a href="#">tab3</a></dt>
+						<dd class="box hide">내용3</dd>
+					</dl>
+				</div>
+				<div class="cont_2"> 
+					<h2>토글</h2>
+				</div>
+			</section>
+			<section class="center">
+				<div class="cont_3">
+					<h2>리스트</h2>
+				</div>
+			</section>
+			<section class="btm">
+				<div class="cont_3">
+					<table class="col">
+						<caption> 테이블대한 제목이나 설명 입력 </caption>
+						<colgroup>
+							<col width=20% span="2">
+							<col width=30% span="2">
+						</colgourp>
+						<thead>
+							<tr>
+								<th scope=“col”>제목1</th>
+								<th scope=“col”>제목2</th>
+								<th scope=“col”>제목3</th>
+								<th scope=“col”>제목4</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr> 
+								<td colspan="2" rowspan="2">
+									<ul class="inputbox">
+										<li>
+											<input type="text" name="phone" id="phone" maxlength="3" size="3" title="휴대폰첫째자리" /> -
+											<input type="text" name="phone2" id="phone2" maxlength="4" size="4" title="휴대폰중간자리" /> -
+											<input type="text" name="phone3" id="phone3" maxlength="4" size="4" title="휴대폰끝자리" />
+										</li>
+										<li class="chk-box"> 
+											<input name="" type="checkbox" id="choice1" value="1" title=""  checked/> 
+											<label for="choice1">1</label>
+											<input name="" type="checkbox" id="choice2" value="2" title="" />
+											<label for="choice2">2</label>
+											<input name="" type="checkbox" id="choice3" value="2" title="" />
+											<label for="choice3">3</label>
+											<input name="" type="checkbox" id="choice4" value="2" title="" />
+											<label for="choice4">4</label>
+											<input name="" type="checkbox" id="choice5" value="2" title="" />
+											<label for="choice5">5</label>
+										</li>
+										<li class="ra-box">
+											<input name="receivecd" type="radio" id="receiveYes" value="Y" title="메일링 리스트 가입 여부"  checked/> 
+											<label for="receiveYes">예</label>
+											<input type="radio" name="receivecd" id="receiveNo" value="N" title="메일링 리스트 가입 여부" />
+											<label for="receiveNo">아니오</label>
+										</li>
+										<li>
+											<input type="text" name="startDate" id="startDate"  class="date" title="검색시작일자" />
+											<span class="bar">-</span>
+											<input type="text" name="endDate" id="endDate" class="date" title="검색종료일자" />
+										</li>
+									</ul>
+								</td>
+								<td>
+									<textarea placeholder="내용을 입력해 주세요."></textarea>
+								</td>
+								<td>
+									<fieldset oninput="total.value=parseInt(bar.value)">
+										<input id="bar" name="bar" type="range" title="범위선택"> 
+										<output name="total" title="선택한 범위 값">0</output>
+									</fieldset>
+								</td>
+							</tr>
+							<tr> 
+								<td>
+									<section>
+										<form action="survey.php" method="post" name="survey">
+										<label for="useBrowser">주로 사용하는 웹 브라우저</label><br>
+										<input type="text" id="useBrowser" size="30" list="browser">
+										<datalist id="browser">
+											<option value="크롬" label="Google"></option>
+											<option value="파이어폭스" label="Mozilla"></option>
+											<option value="사파리" label="Apple"></option>
+											<option value="오페라" label="Opera"></option>
+											<option value="인터넷 익스플로러" label="MicroSoft"></option>
+										</datalist>
+										</form>
+									</section>
+								</td>
+								<td>
+									<fieldset oninput="total.value=parseInt(bar.value)">
+										<input id="bar" name="bar" type="range" title="범위선택"> 
+										<output name="total" title="선택한 범위 값">0</output>
+									</fieldset>
+								</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="3" class="all">합계</td>
+								<td>1111</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</section>
+			<aside class="quick">
+				<ul>
+					<li>메뉴1</li>
+					<li>메뉴2</li>
+					<li>메뉴3</li>
+					<li>메뉴4</li>
+					<li>메뉴5</li>
+				</ul>
+			</aside>
+		</div>
+	</div>
+	<footer>
+		<address>(35345) 대전광역시 서구 배재로 155-40(도마동)</address>
+	</footer>
+</body>
+</html>

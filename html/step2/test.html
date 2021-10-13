@@ -6,19 +6,30 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 	<title>풀스택개발자를 위한 웹퍼블리싱 | 배재대학교</title>
 	<link rel="stylesheet" type="text/css" href="../../css/css.css" />
+	<script type="text/javascript" src="../../js/js.js" ></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+		  $(".iframe_btn").click(function(){
+			$(".iframe_wrap").toggle();
+		  });
+		});
+	</script>
 	<style type="text/css">
-		.test_wrap {padding:50px; border:1px solid #eee; overflow-y:auto;}
+		.test_wrap {overflow-y:auto;}
 		.test_wrap table {width:100%; border:1px solid #ccc; table-layout:fixed; margin-top:30px;}
+		.test_wrap table th {background:#dbdbdb; height:40px; font-size:14px; text-align:center; border-top:1px solid #eee; border-left:1px solid #eee;}
+		.test_wrap table td {height:40px; font-size:14px; text-align:center; border-top:1px solid #eee; border-left:1px solid #eee;}
+		.test_wrap table td.all {background:#f4f4f4;}
 		.test_wrap table th:first-child,
 		.test_wrap table td:first-child {border-left:0;}
 		.test_wrap table tr:first-child th,
 		.test_wrap table tr:first-child td {border-top:0;}
-		.test_wrap table.row th, .test_wrap table.row td {border-top:1px solid #eee;}
-
-		.test_wrap table th {background:#dbdbdb; height:40px; font-size:14px; text-align:center; border-top:1px solid #eee; border-left:1px solid #eee;}
-		.test_wrap table td {height:40px; font-size:14px; text-align:center; border-top:1px solid #eee; border-left:1px solid #eee;}
-		.test_wrap table td.all {background:#f4f4f4;}
+		.test_wrap table.row th, 
+		.test_wrap table.row td {border-top:1px solid #eee;}
 		.test_wrap table tfoot {border-top:1px solid #eee;}
+
+		.test_wrap .iframe_btn {text-align:center; background:#eee; display:block; line-height:50px; border:1px solid #ddd; width:100%;}
+		.test_wrap .iframe_wrap {display:none; transition: all .3s;}
 
 		p:hover {transform:rotate(-360deg);}
 		ol {width:100px; float:left; height:100px; overflow-y:auto; background-color:rgba(0,0,0,0.5); box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;}
@@ -29,14 +40,17 @@
 </head>
 <body>
 	<div class="test_wrap">
-		<!-- <iframe src="https://www.pcu.ac.kr/www/index/index.html" frameborder="0" width="100%" height="500px" scrolling="yes" title="배재대 홈페이지">
-			<p>프레임이 표시되지 않는 분은 <a href="https://www.pcu.ac.kr/www/index/index.html">배재대 바로가기</a>를 클릭해 주세요.</p>
-		</iframe>  -->
-
+		<a href="#" class="iframe_btn">Iframe sample</a>
+		<div class="iframe_wrap">
+			<iframe src="https://www.pcu.ac.kr/www/index/index.html" frameborder="0" width="100%" height="800px" scrolling="yes" title="배재대 홈페이지">
+				<p>프레임이 표시되지 않는 분은 <a href="https://www.pcu.ac.kr/www/index/index.html">배재대 바로가기</a>를 클릭해 주세요.</p>
+			</iframe>
+		</div>
 		<video width="100%" height="300px" controls="controls" poster="../pr_630_20210717.jpeg">
 			<source src="../pr_630_20210717.mp4" type="video/mp4">
-			<track label="English subtitles" kind="subtitles" srclang="en" src="chrome_subtitles.vtt" default>
+			<!-- <track label="English subtitles" kind="subtitles" srclang="en" src="chrome_subtitles.vtt" default> -->
 		</video>
+
 		<p>안녕하세요 반갑습니다.</p>
 		<p>안녕하세요 반갑습니다.</p>
 		<p>안녕하세요 반갑습니다.</p>
@@ -54,8 +68,7 @@
 			<li>사</li>
 			<li>사</li>
 		</ol>
-
-
+		
 		<table class="col">
 			<caption> 테이블대한 제목이나 설명 입력 </caption>
 			<colgroup>
