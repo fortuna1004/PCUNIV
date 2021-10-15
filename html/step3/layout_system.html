@@ -18,7 +18,7 @@
  
 		// -----------------  리스트토글  ----------------- //
 		jQuery(function($) {
-			$(".open").hide();
+			$(".hide").hide();
 			$(".toggle a").click(function(){
 		
 				var objNum = $(".open");
@@ -26,7 +26,7 @@
 		
 				for (i=0; i<objNum.length; i++ ){
 					if(i==objIdx){
-						$(objNum[objIdx]).slideToggle(300);
+						$(objNum[objIdx]).slideDown(300);
 					} else if (i!=objIdx){
 						$(objNum[i]).slideUp(300);
 					}
@@ -68,6 +68,132 @@
 		    	changeMonth: true,
 			});
 		});
+
+		// ----------------- 차트 ----------------- //
+		jQuery(function($) {
+			new Chart(document.getElementById("mix"), {
+				type: 'bar',
+				data: {
+				labels: ["1900", "1950", "1999", "2050"],
+				datasets: [{
+					label: "Europe",
+					type: "line",
+					borderColor: "#3e95cd",
+					data: [408,547,675,734],
+					fill: false
+					}, {
+					label: "Africa",
+					type: "line",
+					borderColor: "#c45850",
+					data: [133,221,783,2478],
+					fill: false
+					}, {
+					label: "Europe",
+					type: "bar",
+					backgroundColor: "#59C173",
+					data: [408,547,675,734],
+					}, {
+					label: "Africa",
+					type: "bar",
+					backgroundColor: "#a17fe0",
+					data: [133,221,783,2478]
+					}
+				]
+				},
+					options: {
+					title: {
+						display: true,
+						text: 'Population growth (millions): Europe & Africa'
+					},
+					legend: { display: false }
+				}
+			});
+
+			new Chart(document.getElementById("pie"), {
+				type: 'polarArea',
+				data: {
+				labels: ["Africa", "Asia", "Europe", "Latin America"],
+				datasets: [
+					{
+						label: "Population (millions)",
+						backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9"],
+						data: [2478,5267,734,784,433]
+						}
+					]
+				},
+					options: {
+					title: {
+						display: true,
+						text: 'Predicted world population (millions) in 2050'
+					}
+				}
+			});
+
+			new Chart(document.getElementById("bubble"), {
+				type: 'bubble',
+				data: {
+				labels: "Africa",
+				datasets: [
+					{
+					label: ["Korea"],
+					backgroundColor: "rgba(255,221,50,0.2)",
+					borderColor: "rgba(255,221,50,1)",
+					data: [{
+							x: 21269017,
+							y: 5.245,
+							r: 30
+						}]
+					}, {
+					label: ["Denmark"],
+					backgroundColor: "rgba(60,186,159,0.2)",
+					borderColor: "rgba(60,186,159,1)",
+					data: [{
+							x: 258702,
+							y: 7.526,
+							r: 10
+						}]
+					}, {
+					label: ["Germany"],
+					backgroundColor: "rgba(0,0,0,0.2)",
+					borderColor: "#000",
+					data: [{
+							x: 3979083,
+							y: 6.994,
+							r: 15
+						}]
+					}, {
+					label: ["Japan"],
+					backgroundColor: "rgba(193,46,12,0.2)",
+					borderColor: "rgba(193,46,12,1)",
+					data: [{
+							x: 4931877,
+							y: 5.921,
+							r: 15
+						}]
+					}
+				]
+				},
+				options: {
+				title: {
+					display: true,
+					text: 'Predicted world population (millions) in 2050'
+				}, scales: {
+					yAxes: [{ 
+					scaleLabel: {
+						display: true,
+						labelString: "Happiness"
+					}
+					}],
+					xAxes: [{ 
+					scaleLabel: {
+						display: true,
+						labelString: "GDP (PPP)"
+					}
+					}]
+				}
+				}
+			});
+		});
 		
 		// -----------------  레프트메뉴 ----------------- //
 		jQuery(function($) {
@@ -106,8 +232,11 @@
 					}	
 					})
 				},
-				activeOff : function($target) {$target.parent().removeClass('on');},
-				activeOn : function($target) {$target.parent().addClass('on');
+				activeOff : function($target) {
+					$target.parent().removeClass('on');
+				},
+				activeOn : function($target) {
+					$target.parent().addClass('on');
 				}
 			};
 
@@ -119,34 +248,45 @@
 </head>
 <body class="system">
 	<header>
-		<h1 class="logo">
+		<h1 class="logo" onclick="location.href='/html/step3/layout_system.html'">
 			new start 배재 ai,sw 중점대학 로고
 			<!-- <img src="../../images/logo.png" alt="new start 배재 ai,sw 중점대학 로고" width="152px" height="76px" /> -->
 		</h1>
 		<nav class="menu">
 			<ul>
-				<li><a href="#">메뉴1</a>
+				<li><a href="#">STEP1</a>
 					<ul class="submenu">
-						<li><a href="link.html">LINK</a></li>
-						<li><a href="../intro.html">INTRO</a></li>
+						<li><a href="../intro.html">Intro</a></li>
+						<li><a href="../step1/link.html">Link</a></li>
+					</ul>
+				</li>
+				<li><a href="#">STEP2</a>
+					<ul class="submenu">
+						<li><a href="../step2/layout_system.html">Layout_system</a></li>
+						<li><a href="../step2/link.html">Link</a></li>
+					</ul>
+				</li>
+				<li><a href="#">STEP3</a>
+					<ul class="submenu">
+						<li><a href="../step3/layout_system.html">Layout_system</a></li>
+						<li><a href="../step3/link.html">Link</a></li>
+					</ul>
+				</li>
+				<li><a href="#">STEP4</a>
+					<ul class="submenu">
+						<li><a href="#">메뉴1-2</a></li>
+						<li><a href="#">메뉴1-2</a></li>
 						<li><a href="#">메뉴1-2</a></li>
 					</ul>
 				</li>
-				<li><a href="#">메뉴2</a>
+				<li><a href="#">STEP5</a>
 					<ul class="submenu">
 						<li><a href="#">메뉴1-2</a></li>
 						<li><a href="#">메뉴1-2</a></li>
 						<li><a href="#">메뉴1-2</a></li>
 					</ul>
 				</li>
-				<li><a href="#">메뉴3</a>
-					<ul class="submenu">
-						<li><a href="#">메뉴1-2</a></li>
-						<li><a href="#">메뉴1-2</a></li>
-						<li><a href="#">메뉴1-2</a></li>
-					</ul>
-				</li>
-				<li><a href="#">메뉴4</a>
+				<li><a href="#">STEP6</a>
 					<ul class="submenu">
 						<li><a href="#">메뉴1-2</a></li>
 						<li><a href="#">메뉴1-2</a></li>
@@ -159,16 +299,10 @@
 	<div class="main_contents">
 		<nav class="left">
 			<span class="left_btn"></span>
-			<ul>
-				<li><a href="#">메뉴1</a>
+			<ul class="leftmenu">
+				<li><a href="#">STEP1</a>
 					<ul>
-						<li><a href="#">메뉴1-2</a>
-							<ul>
-								<li><a href="#">메뉴1-3</a></li>
-								<li><a href="#">메뉴1-3</a></li>
-							</ul>
-						</li>
-						<li><a href="#">메뉴1-2</a>
+						<li><a href="../step1/link.html">Link</a>
 							<ul>
 								<li><a href="#">메뉴1-3</a></li>
 								<li><a href="#">메뉴1-3</a></li>
@@ -176,26 +310,68 @@
 						</li>
 					</ul>
 				</li>
-				<li><a href="#">메뉴2</a>
+				<li><a href="#">STEP2</a>
 					<ul>
-						<li><a href="#">메뉴2-2</a>
-							<ul>
+						<li><a href="../../html/step2/layout_portal.html">layout_portal</a>
+							<!-- <ul>
 								<li><a href="#">메뉴2-3</a></li>
 								<li><a href="#">메뉴2-3</a></li>
-							</ul>
+							</ul> -->
 						</li>
+						<li><a href="../../html/step2/layout_system.html">layout_system</a>
+					</ul>
+				</li>
+				<li><a href="#">STEP3</a>
+					<ul>
+						<li><a href="../../html/step3/layout_system.html">layout_system</a></li>
+						<li><a href="../../html/step3/link.html">link</a></li>
+					</ul>
+				</li>
+				<li><a href="#">STEP4</a>
+					<ul>
+					</ul>
+				</li>
+				<li><a href="#">STEP5</a>
+					<ul>
+					</ul>
+				</li>
+				<li><a href="#">STEP6</a>
+					<ul>
 					</ul>
 				</li>
 			</ul>
 		</nav>
 		<div class="right">
 			<section class="top">
-				<div class="cont_1">
+				<div class="areaBox"> 
+					<canvas id="bubble" ></canvas>
+				</div>
+				<div class="areaBox">
+					<canvas id="mix" ></canvas>
+				</div>
+			</section>
+			<section class="center">
+				<div>
+					<div class="animate">
+						<div class="background">
+						  <div class="action">
+							<span></span>
+							<span></span>
+							<span></span>
+							<span></span>
+							<div class="cont">
+							  <h2>배재대 온라인강의</h2>
+							  <p><a>여러분의 꿈을<br>응원합니다!</a></p>
+							</div>
+						  </div>
+						</div>
+					  </div>
+				</div>
+				<div>
 					<dl class="tab">
 						<dt><a href="#" class="on">tab1</a></dt>
 						<dd class="box">
 							<ul>
-								<li>2021-2학기 중간강의평가 실시 안내2021-2학기 중간강의평가 실시 안내2021-2학기 중간강의평가 실시 안내2021-2학기 중간강의평가 실시 안내2021-2학기 중간강의평가 실시 안내</li>
 								<li>2021-2학기 중간강의평가 실시 안내2021-2학기 중간강의평가 실시 안내2021-2학기 중간강의평가 실시 안내2021-2학기 중간강의평가 실시 안내2021-2학기 중간강의평가 실시 안내</li>
 								<li>2021-2학기 중간강의평가 실시 안내2021-2학기 중간강의평가 실시 안내2021-2학기 중간강의평가 실시 안내2021-2학기 중간강의평가 실시 안내2021-2학기 중간강의평가 실시 안내</li>
 								<li>2021-2학기 중간강의평가 실시 안내2021-2학기 중간강의평가 실시 안내2021-2학기 중간강의평가 실시 안내2021-2학기 중간강의평가 실시 안내2021-2학기 중간강의평가 실시 안내</li>
@@ -211,152 +387,117 @@
 						<dd class="box hide">내용3</dd>
 					</dl>
 				</div>
-				<div class="toggle cont_2"> 
+				<div class="toggle"> 
 					<dl>
 						<dt><a href="#">오늘은 시스템 사이트 작업중</a></dt>
-						<dd class="open">스타일을 이쁘게 넣어주세요</dd>
-					</dl>
-					<dl>
-						<dt><a href="#">오늘은 시스템 사이트 작업중</a></dt>
-						<dd class="open">스타일을 이쁘게 넣어주세요</dd>
-					</dl>
-					<dl>
-						<dt><a href="#">오늘은 시스템 사이트 작업중</a></dt>
-						<dd class="open">스타일을 이쁘게 넣어주세요</dd>
-					</dl>
-				</div>
-			</section>
-			<section class="center">
-				<div class="cont_3">
-					<dl class="listBox">
-						<dt>
-						<div class="headers">
-
-							<!--Content before waves-->
-							<div class="inner-header flex">
-							<!--Just the logo.. Don't mind this-->
-							<svg version="1.1" class="logos" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-							xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve">
-							<path fill="#FFFFFF" stroke="#000000" stroke-width="10" stroke-miterlimit="10" d="M57,283" />
-							<g><path fill="#fff"
-							d="M250.4,0.8C112.7,0.8,1,112.4,1,250.2c0,137.7,111.7,249.4,249.4,249.4c137.7,0,249.4-111.7,249.4-249.4
-							C499.8,112.4,388.1,0.8,250.4,0.8z M383.8,326.3c-62,0-101.4-14.1-117.6-46.3c-17.1-34.1-2.3-75.4,13.2-104.1
-							c-22.4,3-38.4,9.2-47.8,18.3c-11.2,10.9-13.6,26.7-16.3,45c-3.1,20.8-6.6,44.4-25.3,62.4c-19.8,19.1-51.6,26.9-100.2,24.6l1.8-39.7    c35.9,1.6,59.7-2.9,70.8-13.6c8.9-8.6,11.1-22.9,13.5-39.6c6.3-42,14.8-99.4,141.4-99.4h41L333,166c-12.6,16-45.4,68.2-31.2,96.2  c9.2,18.3,41.5,25.6,91.2,24.2l1.1,39.8C390.5,326.2,387.1,326.3,383.8,326.3z" />
-							</g>
-							</svg>
-								<h1>Simple CSS Waves</h1>
-							</div>
-							
-							<div>
-							<svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-							viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-							<defs>
-								<path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-							</defs>
-							<g class="parallax">
-								<use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-								<use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
-								<use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
-								<use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
-							</g>
-							</svg>
-							</div>
-							<!--Waves end-->
-							
-							</div>
-							<!--Header ends-->
-							
-							<!--Content starts-->
-							<div class="content flex">
-							<p>Daniel Österman | 2019 | Free to use</p>
-							</div>
-						</dt>
-						<dd>
+						<dd class="open">
 							<ul>
 								<li>
-									<span class="ic"><i class="fab fa-asymmetrik"></i></span>
+									<span class="ic"><i class="fab fa-apple"></i></span>
+									<span class="tx">오늘날 웹은 우리에게 필수 요소가 되었다. 오늘날 웹은 우리에게 필수 요소가 되었다. 오늘날 웹은 우리에게 필수 요소가 되었다. 웹은 우리에게 필수 요소가 되었다. 웹은 우리에게 필수 요소가 되었다. 웹은 우리에게 필수 요소가 되었다. 웹은 우리에게 필수 요소가 되었다. 웹은 우리에게 필수 요소가 되었다. 웹은 우리에게 필수 요소가 되었다. 웹은 우리에게 필수 요소가 되었다. 웹은 우리에게 필수 요소가 되었다. 웹은 우리에게 필수 요소가 되었다. 웹은 우리에게 필수 요소가 되었다. 웹은 우리에게 필수 요소가 되었다. 웹은 우리에게 필수 요소가 되었다. 웹은 우리에게 필수 요소가 되었다. 웹은 우리에게 필수 요소가 되었다.</span>
+								</li>
+								<li>
+									<span class="ic"><i class="fab fa-aws"></i></span>
 									<span class="tx">오늘날 웹은 우리에게 필수 요소가 되었다.</span>
 								</li>
 								<li>
-									<span class="ic"><i class="fab fa-asymmetrik"></i></span>
-									<span class="tx">오늘날 웹은 우리에게 필수 요소가 되었다.</span>
-								</li>
-								<li>
-									<span class="ic"><i class="fab fa-asymmetrik"></i></span>
+									<span class="ic"><i class="fab fa-google"></i></span>
 									<span class="tx">오늘날 웹은 우리에게 필수 요소가 되었다.</span>
 								</li>
 							</ul>
 						</dd>
 					</dl>
+					<dl>
+						<dt><a href="#">오늘은 시스템 사이트 작업중</a></dt>
+						<dd class="open hide">스타일을 이쁘게 넣어주세요</dd>
+					</dl>
+					<dl>
+						<dt><a href="#">오늘은 시스템 사이트 작업중</a></dt>
+						<dd class="open hide">스타일을 이쁘게 넣어주세요</dd>
+					</dl>
 				</div>
 			</section>
 
 			<section class="btm">
-				<div class="cont_3">
-					<table class="col">
-						<caption> 테이블대한 제목이나 설명 입력 </caption>
+				<div>
+					<h3>테이블 데이터(scope="row")</h3>
+					<table class="row" summary="테이블대한 제목이나 설명인데, html5에서는 사용하지 않습니다.">
+						<caption> 테이블대한 제목이나 설명 입력합니다.</caption>
 						<colgroup>
-							<col width=20% span="2">
-							<col width=30% span="2">
+							<col width="10%" >
+							<col width="*" span="4">
 						</colgourp>
-						<thead>
-							<tr>
-								<th scope=“col”>제목1</th>
-								<th scope=“col”>제목2</th>
-								<th scope=“col”>제목3</th>
-								<th scope=“col”>제목4</th>
-							</tr>
-						</thead>
 						<tbody>
+							<tr>
+								<th rowspan="4">입력 폼</th>
+								<th scope="col">1</th>
+								<th scope="col">2</th>
+								<th scope="col">3</th>
+								<th scope="col">4</th>
+							</tr>
 							<tr> 
-								<td colspan="2" rowspan="2">
-									<ul class="inputbox">
-										<li>
-											<input type="text" name="phone" id="phone" maxlength="3" size="3" title="휴대폰첫째자리" /> -
-											<input type="text" name="phone2" id="phone2" maxlength="4" size="4" title="휴대폰중간자리" /> -
-											<input type="text" name="phone3" id="phone3" maxlength="4" size="4" title="휴대폰끝자리" />
-										</li>
-										<li class="chk-box"> 
-											<input name="" type="checkbox" id="choice1" value="1" title=""  checked/> 
-											<label for="choice1">1</label>
-											<input name="" type="checkbox" id="choice2" value="2" title="" />
-											<label for="choice2">2</label>
-											<input name="" type="checkbox" id="choice3" value="2" title="" />
-											<label for="choice3">3</label>
-											<input name="" type="checkbox" id="choice4" value="2" title="" />
-											<label for="choice4">4</label>
-											<input name="" type="checkbox" id="choice5" value="2" title="" />
-											<label for="choice5">5</label>
-										</li>
-										<li class="ra-box">
-											<input name="receivecd" type="radio" id="receiveYes" value="Y" title="메일링 리스트 가입 여부"  checked/> 
-											<label for="receiveYes">예</label>
-											<input type="radio" name="receivecd" id="receiveNo" value="N" title="메일링 리스트 가입 여부" />
-											<label for="receiveNo">아니오</label>
-										</li>
-										<li>
-											<label for="startDate">시작날짜</label>
-											<input type="text" name="startDate" id="startDate" class="date" />
-											<span class="bar">-</span>
-											<label for="endDate">끝나는날짜</label>
-											<input type="text" name="endDate" id="endDate" class="date" />
-										</li>
-									</ul>
+								<td>
+									<label for="phone"></label>
+									<input type="text" autocomplete="off" name="phone" id="phone" maxlength="3" size="3" title="휴대폰첫째자리" value="010" /> -
+									<label for="phone2"></label>
+									<input type="text" autocomplete="off" name="phone2" id="phone2" maxlength="4" size="4" title="휴대폰가운데자리" /> -
+									<label for="phone3"></label>
+									<input type="text" autocomplete="off" name="phone3" id="phone3" maxlength="4" size="4" title="휴대폰끝자리" />
 								</td>
 								<td>
-									<textarea placeholder="내용을 입력해 주세요."></textarea>
+									<p class="ra-box">
+										<input name="receivecd" type="radio" id="receiveYes1" value="Y" title="메일링 리스트 가입 여부"  checked/> 
+										<label for="receiveYes1">예</label>
+										<input type="radio" name="receivecd" id="receiveNo1" value="N" title="메일링 리스트 가입 여부" />
+										<label for="receiveNo1">아니오</label>
+									</p><br>
+									<p class="chk-box"> 
+										<input name="" type="checkbox" id="choice11" value="1" title=""  checked/> 
+										<label for="choice11">1</label>
+										<input name="" type="checkbox" id="choice22" value="2" title="" />
+										<label for="choice22">2</label>
+										<input name="" type="checkbox" id="choice33" value="2" title="" />
+										<label for="choice33">3</label>
+										<input name="" type="checkbox" id="choice44" value="2" title="" />
+										<label for="choice44">4</label>
+										<input name="" type="checkbox" id="choice55" value="2" title="" />
+										<label for="choice55">5</label>
+									</p>
 								</td>
 								<td>
-									<fieldset oninput="total.value=parseInt(bar.value)">
-										<input id="bar" name="bar" type="range" title="범위선택"> 
-										<output name="total" title="선택한 범위 값">0</output>
-									</fieldset>
+									<p class="dateBox">
+										<label for="startDate">시작날짜</label>
+										<input type="text" autocomplete="off" name="startDate" id="startDate" class="date" />
+										<span class="bar">-</span>
+										<label for="endDate">끝나는날짜</label>
+										<input type="text" autocomplete="off" name="endDate" id="endDate" class="date" />
+									</p>
+								</td>
+								<td>
+									<form action="서버주소입력" method="POST" name="memberJoin" class="formBox">
+										<label for="comment" class="hide">가입인사</label><br>
+										<textarea id="comment" cols="30" rows="4" wrap="hard" required="required" placeholder="가입인사를 남겨주세요."></textarea>
+										<input type="submit" value="전송">
+									</form>
 								</td>
 							</tr>
 							<tr> 
 								<td>
-									<section>
-										<form action="survey.php" method="post" name="survey">
+									<form action="formula.php" method="POST" name="formula">
+										<fieldset oninput="total.value=parseInt(bar.value)">
+											<label for="bar"><b>범위선택</b></label> :
+											<input id="bar" name="bar" type="range" title="범위선택">
+											<output name="total" title="선택한 범위 값">0</output>
+										</fieldset>
+										<fieldset><b>진행률</b> : <progress value="50" max="100"></progress></fieldset>
+											<label for="rating"><b>인사고과 점수</b></label>
+											<meter id="rating" value="7" min="0" low="3" max="10" high="7" optimum="10">7점</meter>
+										</fieldset>
+									</form>
+								</td>
+								<td colspan="2">
+									<p>
+										<form  class="formBox" action="survey.php" method="post" name="survey">
 										<label for="useBrowser">주로 사용하는 웹 브라우저</label><br>
 										<input type="text" id="useBrowser" size="30" list="browser">
 										<datalist id="browser">
@@ -367,32 +508,450 @@
 											<option value="인터넷 익스플로러" label="MicroSoft"></option>
 										</datalist>
 										</form>
-									</section>
+									</p>
 								</td>
 								<td>
-									<fieldset oninput="total.value=parseInt(bar.value)">
-										<input id="bar" name="bar" type="range" title="범위선택"> 
-										<output name="total" title="선택한 범위 값">0</output>
-									</fieldset>
+									<p>
+										<label for="city" class="hide">지역선택</label>
+										<select id="city" onchange="alert(this.value)">
+											<optgroup label="서울시">
+												<option value="songpa-gu">송파구</option>
+												<option value="gangnam-gu">강남구</option>
+												<option value="seocho-gu">서초구</option>
+												<option value="jung-gu">중구</option>
+											</optgroup>
+											<optgroup label="경기도">
+												<option value="seongnam-si">성남시</option>
+												<option value="gwacheon-si">과천시</option>
+												<option value="yongin-si">용인시</option>
+												<option value="hanam-si">하남시</option>
+											</optgroup>
+										</select>
+									</p>
 								</td>
 							</tr>
-						</tbody>
-						<tfoot>
 							<tr>
-								<td colspan="3" class="all">합계</td>
-								<td>1111</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
 							</tr>
-						</tfoot>
+						</tbody>
 					</table>
+
+					<h3>테이블 데이터(scope="col")</h3>
+					<table class="col" summary="테이블대한 제목이나 설명인데, html5에서는 사용하지 않습니다.">
+						<caption> 테이블대한 제목이나 설명 입력합니다.</caption>
+						<colgroup>
+							<col width="*" span="6">
+						</colgourp>
+						<thead>
+							<tr>
+								<th scope="col" colspan="2" style="color:#a17fe0;">colspan="2"</th>
+								<th scope="col" rowspan="2" style="color:#59C173;">rowspan="2"</th>
+								<th scope="col" style="background:#a17fe0">4</th>
+								<th scope="col" style="background:#59C173">5</th>
+								<th scope="col">6</th>
+								<th scope="col">7</th>
+							</tr>
+							<tr>
+								<th scope="col">1</th>
+								<th scope="col">2</th>
+								<th scope="col" colspan="2" style="color:#a17fe0;">colspan="2"</th>
+								<th scope="col">5</th>
+								<th scope="col">6</th>
+							</tr>
+							
+						</thead>
+						<tbody>
+							<tr> 
+								<th>1</th>
+								<td>2</td>
+								<td>3</td>
+								<td>4</td>
+								<td>5</td>
+								<td>6</td>
+								<td>7</td>
+							</tr>
+							<tr> 
+								<th>1</th>
+								<td>2</td>
+								<td>3</td>
+								<td>4</td>
+								<td>5</td>
+								<td>6</td>
+								<td>7</td>
+							</tr>
+							<tr> 
+								<th>1</th>
+								<td>2</td>
+								<td>3</td>
+								<td>4</td>
+								<td>5</td>
+								<td>6</td>
+								<td>7</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>분할된 테이블</h3>
+					<ul class="flexBox">
+						<li>
+							<table class="col" summary="테이블대한 제목이나 설명인데, html5에서는 사용하지 않습니다.">
+								<caption> 테이블대한 제목이나 설명 입력합니다.</caption>
+								<colgroup>
+									<col width="*" span="6">
+								</colgourp>
+								<thead>
+									<tr>
+										<th scope="col" colspan="2" style="color:#a17fe0;">colspan="2"</th>
+										<th scope="col" rowspan="2" style="color:#59C173;">rowspan="2"</th>
+										<th scope="col" style="background:#a17fe0">4</th>
+										<th scope="col" style="background:#59C173">5</th>
+										<th scope="col">6</th>
+										<th scope="col">7</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr> 
+										<th>1</th>
+										<td>2</td>
+										<td>3</td>
+										<td>4</td>
+										<td>5</td>
+										<td>6</td>
+										<td>7</td>
+									</tr>
+									<tr> 
+										<th>1</th>
+										<td>2</td>
+										<td>3</td>
+										<td>4</td>
+										<td>5</td>
+										<td>6</td>
+										<td>7</td>
+									</tr>
+									<tr> 
+										<th>1</th>
+										<td>2</td>
+										<td>3</td>
+										<td>4</td>
+										<td>5</td>
+										<td>6</td>
+										<td>7</td>
+									</tr>
+									<tr> 
+										<th>1</th>
+										<td>2</td>
+										<td>3</td>
+										<td>4</td>
+										<td>5</td>
+										<td>6</td>
+										<td>7</td>
+									</tr>
+								</tbody>
+							</table>
+						</li>
+						<li class="btn">
+							<span>
+								<button class="l"><i class="fas fa-angle-left"></i></button>
+								<button class="r"><i class="fas fa-angle-right"></i></button>
+							</span>
+						</li>
+						<li>
+							<table class="col" summary="테이블대한 제목이나 설명인데, html5에서는 사용하지 않습니다.">
+								<caption> 테이블대한 제목이나 설명 입력합니다.</caption>
+								<colgroup>
+									<col width="*" span="6">
+								</colgourp>
+								<thead>
+									<tr>
+										<th scope="col" colspan="2" style="color:#a17fe0;">colspan="2"</th>
+										<th scope="col" rowspan="2" style="color:#59C173;">rowspan="2"</th>
+										<th scope="col" style="background:#a17fe0">4</th>
+										<th scope="col" style="background:#59C173">5</th>
+										<th scope="col">6</th>
+										<th scope="col">7</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr> 
+										<th>1</th>
+										<td>2</td>
+										<td>3</td>
+										<td>4</td>
+										<td>5</td>
+										<td>6</td>
+										<td>7</td>
+									</tr>
+									<tr> 
+										<th>1</th>
+										<td>2</td>
+										<td>3</td>
+										<td>4</td>
+										<td>5</td>
+										<td>6</td>
+										<td>7</td>
+									</tr>
+									<tr> 
+										<th>1</th>
+										<td>2</td>
+										<td>3</td>
+										<td>4</td>
+										<td>5</td>
+										<td>6</td>
+										<td>7</td>
+									</tr>
+									<tr> 
+										<th>1</th>
+										<td>2</td>
+										<td>3</td>
+										<td>4</td>
+										<td>5</td>
+										<td>6</td>
+										<td>7</td>
+									</tr>
+								</tbody>
+							</table>
+						</li>
+					</ul>
+					<h3>고정된 테이블(헤더)</h3>
+					<table class="col" summary="테이블대한 제목이나 설명인데, html5에서는 사용하지 않습니다.">
+						<caption> 테이블대한 제목이나 설명 입력합니다.</caption>
+						<colgroup>
+							<col width="*" span="6">
+						</colgourp>
+						<thead>
+							<tr>
+								<th scope="col" colspan="2" style="color:#a17fe0;">colspan="2"</th>
+								<th scope="col" rowspan="2" style="color:#59C173;">rowspan="2"</th>
+								<th scope="col" style="background:#a17fe0">4</th>
+								<th scope="col" style="background:#59C173">5</th>
+								<th scope="col">6</th>
+								<th scope="col">7</th>
+							</tr>
+						</thead>
+					</table>
+					<div class="scrollBox" style="height:300px;">
+						<table class="col" summary="테이블대한 제목이나 설명인데, html5에서는 사용하지 않습니다.">
+							<colgroup>
+								<col width="*" span="6">
+							</colgourp>
+							<tbody>
+								<tr> 
+									<th>1</th>
+									<td>2</td>
+									<td>3</td>
+									<td>4</td>
+									<td>5</td>
+									<td>6</td>
+									<td>7</td>
+								</tr>
+								<tr> 
+									<th>1</th>
+									<td>2</td>
+									<td>3</td>
+									<td>4</td>
+									<td>5</td>
+									<td>6</td>
+									<td>7</td>
+								</tr>
+								<tr> 
+									<th>1</th>
+									<td>2</td>
+									<td>3</td>
+									<td>4</td>
+									<td>5</td>
+									<td>6</td>
+									<td>7</td>
+								</tr>
+								<tr> 
+									<th>1</th>
+									<td>2</td>
+									<td>3</td>
+									<td>4</td>
+									<td>5</td>
+									<td>6</td>
+									<td>7</td>
+								</tr>
+								<tr> 
+									<th>1</th>
+									<td>2</td>
+									<td>3</td>
+									<td>4</td>
+									<td>5</td>
+									<td>6</td>
+									<td>7</td>
+								</tr>
+								<tr> 
+									<th>1</th>
+									<td>2</td>
+									<td>3</td>
+									<td>4</td>
+									<td>5</td>
+									<td>6</td>
+									<td>7</td>
+								</tr>
+								<tr> 
+									<th>1</th>
+									<td>2</td>
+									<td>3</td>
+									<td>4</td>
+									<td>5</td>
+									<td>6</td>
+									<td>7</td>
+								</tr>
+								<tr> 
+									<th>1</th>
+									<td>2</td>
+									<td>3</td>
+									<td>4</td>
+									<td>5</td>
+									<td>6</td>
+									<td>7</td>
+								</tr>
+								<tr> 
+									<th>1</th>
+									<td>2</td>
+									<td>3</td>
+									<td>4</td>
+									<td>5</td>
+									<td>6</td>
+									<td>7</td>
+								</tr>
+								<tr> 
+									<th>1</th>
+									<td>2</td>
+									<td>3</td>
+									<td>4</td>
+									<td>5</td>
+									<td>6</td>
+									<td>7</td>
+								</tr>
+								<tr> 
+									<th>1</th>
+									<td>2</td>
+									<td>3</td>
+									<td>4</td>
+									<td>5</td>
+									<td>6</td>
+									<td>7</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h3>고정된 테이블(왼쪽)</h3>
+					<ul class="flexBox leftfix">
+						<li>
+							<table class="col" summary="테이블대한 제목이나 설명인데, html5에서는 사용하지 않습니다.">
+								<caption> 테이블대한 제목이나 설명 입력합니다.</caption>
+								<colgroup>
+									<col width="*" span="2">
+								</colgourp>
+								<thead>
+									<tr>
+										<th scope="col" colspan="2" style="color:#a17fe0;">colspan="2"</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>1</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>1</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>1</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>1</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>1</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>1</td>
+									</tr>
+								</tbody>
+							</table>
+						</li>
+						<li>
+							<table class="col" summary="테이블대한 제목이나 설명인데, html5에서는 사용하지 않습니다.">
+								<caption> 테이블대한 제목이나 설명 입력합니다.</caption>
+								<colgroup>
+									<col width="250px" span="5">
+								</colgourp>
+								<thead>
+									<tr>
+										<th scope="col" rowspan="2" style="color:#59C173;">rowspan="2"</th>
+										<th scope="col" style="background:#a17fe0">4</th>
+										<th scope="col" style="background:#59C173">5</th>
+										<th scope="col">6</th>
+										<th scope="col">7</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+									</tr>
+								</tbody>
+							</table>
+						</li>
+					</ul>
 				</div>
 			</section>
 			<aside class="quick">
 				<ul>
-					<li>메뉴1</li>
-					<li>메뉴2</li>
-					<li>메뉴3</li>
-					<li>메뉴4</li>
-					<li>메뉴5</li>
+					<li>STEP1</li>
+					<li>STEP2</li>
+					<li>STEP3</li>
+					<li>STEP4</li>
+					<li>STEP5</li>
 				</ul>
 			</aside>
 		</div>

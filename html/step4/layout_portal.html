@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>풀스택개발자를 위한 웹퍼블리싱 | 배재대학교</title>
+	<script type="text/javascript" src="../../js/js.js" ></script>
+	<link rel="stylesheet" type="text/css" href="../../css/css.css" />
+	<script type="text/javascript" >
+
+		// -----------------  스와이프   ----------------- //	
+		jQuery(function($) {
+			var swiper = new Swiper(".mySwiper", {
+				slidesPerView: 4,
+				centeredSlides: true,
+				spaceBetween: 30,
+				pagination: {
+					el: ".swiper-pagination",
+					type: "fraction",
+				},
+				navigation: {
+					nextEl: ".swiper-button-next",
+					prevEl: ".swiper-button-prev",
+				},
+			});
+
+			var appendNumber = 4;
+			var prependNumber = 1;
+			
+			document
+				.querySelector(".prepend-2-slides")
+				.addEventListener("click", function (e) {
+				e.preventDefault();
+				swiper.prependSlide([
+					'<div class="swiper-slide">Slide ' + --prependNumber + "</div>",
+					'<div class="swiper-slide">Slide ' + --prependNumber + "</div>",
+				]);
+			});
+			document
+				.querySelector(".prepend-slide")
+				.addEventListener("click", function (e) {
+				e.preventDefault();
+				swiper.prependSlide(
+					'<div class="swiper-slide">Slide ' + --prependNumber + "</div>"
+				);
+			});
+			document
+				.querySelector(".append-slide")
+				.addEventListener("click", function (e) {
+				e.preventDefault();
+				swiper.appendSlide(
+					'<div class="swiper-slide">Slide ' + ++appendNumber + "</div>"
+				);
+			});
+			document
+				.querySelector(".append-2-slides")
+				.addEventListener("click", function (e) {
+				e.preventDefault();
+				swiper.appendSlide([
+					'<div class="swiper-slide">Slide ' + ++appendNumber + "</div>",
+					'<div class="swiper-slide">Slide ' + ++appendNumber + "</div>",
+				]);
+			});
+
+		});
+		// -----------------  검색키워드   ----------------- //
+		jQuery(function($) {
+			
+			var words = [
+				{text: "일자리계획", weight: 10, html: {"class": "open_no01"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "정보공개", weight: 10, html: {"class": "open_no02"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "대학수학능력시험", weight: 8, html: {"class": "open_no03"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "4차산업혁명", weight: 8, html: {"class": "open_no04"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "연구계획", weight: 7, html: {"class": "open_no04"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "소비자", weight: 7, html: {"class": "open_no05"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "공공데이터활용법", weight: 7, html: {"class": "open_no05"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "정보보안", weight: 7, html: {"class": "open_no05"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "조직도", weight: 5, html: {"class": "open_no06"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "문화", weight: 5, html: {"class": "open_no06"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "조직도", weight: 5, html: {"class": "open_no06"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "중국발미세먼지", weight: 6, html: {"class": "open_no06"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "사물인터넷", weight: 5, html: {"class": "open_no06"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "소비자", weight: 5, html: {"class": "open_no06"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "공공데이터활용법", weight: 4, html: {"class": "open_no06"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "정보보안", weight: 4, html: {"class": "open_no07"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "인공지능", weight: 4, html: {"class": "open_no07"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "조직도", weight: 4, html: {"class": "open_no07"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "중국발미세먼지", weight: 3, html: {"class": "open_no07"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "사물인터넷", weight: 3, html: {"class": "open_no07"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "청주택", weight: 3, html: {"class": "open_no07"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "환경", weight: 2, html: {"class": "open_no08"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "청수당", weight: 2, html: {"class": "open_no08"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "일자리단절정책", weight: 2, html: {"class": "open_no08"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "육아", weight: 2, html: {"class": "open_no08"}, link: {href: "http://jquery.com/", target: "_blank"}}
+			];	 
+			
+			$("#keword").jQCloud(words);
+			
+		});
+	</script>
+</head>
+<body class="portal main">
+	<header>
+		<h1 class="logo" onclick="location.href='/html/step3/layout_system.html'">
+			new start 배재 ai,sw 중점대학 로고
+			<!-- <img src="../../images/logo.png" alt="new start 배재 ai,sw 중점대학 로고" width="152px" height="76px" /> -->
+		</h1>
+		<nav class="menu">
+			<ul>
+				<li><a href="#">STEP1</a>
+					<ul class="submenu">
+						<li><a href="../intro.html">Intro</a></li>
+						<li><a href="../step1/link.html">Link</a></li>
+					</ul>
+				</li>
+				<li><a href="#">STEP2</a>
+					<ul class="submenu">
+						<li><a href="../step2/layout_system.html">Layout_system</a></li>
+						<li><a href="../step2/link.html">Link</a></li>
+					</ul>
+				</li>
+				<li><a href="#">STEP3</a>
+					<ul class="submenu">
+						<li><a href="../step3/layout_system.html">Layout_system</a></li>
+						<li><a href="../step3/link.html">Link</a></li>
+					</ul>
+				</li>
+				<li><a href="#">STEP4</a>
+					<ul class="submenu">
+						<li><a href="#">메뉴1-2</a></li>
+						<li><a href="#">메뉴1-2</a></li>
+						<li><a href="#">메뉴1-2</a></li>
+					</ul>
+				</li>
+				<li><a href="#">STEP5</a>
+					<ul class="submenu">
+						<li><a href="#">메뉴1-2</a></li>
+						<li><a href="#">메뉴1-2</a></li>
+						<li><a href="#">메뉴1-2</a></li>
+					</ul>
+				</li>
+				<li><a href="#">STEP6</a>
+					<ul class="submenu">
+						<li><a href="#">메뉴1-2</a></li>
+						<li><a href="#">메뉴1-2</a></li>
+						<li><a href="#">메뉴1-2</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<div class="main_contents">
+		<section class="top">
+			<div class="cont_1">
+				<div #swiperRef="" class="swiper mySwiper">
+					<div class="swiper-wrapper">
+					    <div class="swiper-slide">Slide 1</div>
+					    <div class="swiper-slide">Slide 2</div>
+					    <div class="swiper-slide">Slide 3</div>
+					    <div class="swiper-slide">Slide 4</div>
+					</div>
+					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-pagination"></div>
+				</div>
+			  
+				<p class="append-buttons">
+					<button class="prepend-2-slides">Prepend 2 Slides</button>
+					<button class="prepend-slide">Prepend Slide</button>
+					<button class="append-slide">Append Slide</button>
+					<button class="append-2-slides">Append 2 Slides</button>
+				</p>
+				<a href="https://www.pcu.ac.kr/www/index/index.html" target="_blank;">
+					<video width="100%" id="" onpause="" muted playsinline autoplay loop poster="../pr_630_20210717.jpg">
+						<source src="../pr_630_20210717.mp4" type="video/mp4" />
+					</video>
+				</a>
+
+			</div>
+		</section>
+		<section class="center">
+			<div class="cont_2">
+				<h2>그리드</h2>
+				<div class="gridBox">
+					<span class="g">
+						<img src="../../images/flower.jpg"  alt="flower" />
+						<span class="overlay">
+							<a href="#1" class="text">POPUP</a>
+						</span>
+					</span>
+					</span>
+					<span class="g">
+						<a href="../../images/flower.jpg" target="_blank;">
+							<img src="../../images/flower.jpg"  alt="flower" />
+						</a>
+					</span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+				</div>
+			</div>
+		</section>
+		<section class="bottom">
+			<div class="cont_3">
+				<div class="jqcloud" id="keword" style="width:100%; height:440px;"></div>
+			</div>
+			<div class="cont_4">
+				<h2>컨텐츠5</h2>
+			</div>
+		</section>
+	</div>
+	<footer>
+		<address>(35345) 대전광역시 서구 배재로 155-40(도마동)</address>
+	</footer>
+</body>
+</html>
