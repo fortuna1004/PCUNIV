@@ -9,61 +9,102 @@
 	<link rel="stylesheet" type="text/css" href="../../css/css.css" />
 	<script type="text/javascript" >
 
+
+		// -----------------  컨펌   ----------------- //	
+		jQuery(function($) {
+			$('.example').on('click', function(){
+				
+				$.confirm({
+					title: '이름을 입력해주세요!',
+					content: '이름을 입력하셔야 다음페이지로 이동합니다.',
+					type: 'purple',
+					typeAnimated: true,
+					buttons: {
+						tryAgain: {
+							text: 'Try again',
+							btnClass: 'btn-purple',
+							action: function(){
+							}
+						},
+						close: function () {
+						}
+					}
+				});
+			});
+		});
+
+		// -----------------  모달팝업   ----------------- //	
+		jQuery(function($) {
+				// Get the modal
+				var modal = document.getElementById("myModal");
+
+				// Get the button that opens the modal
+				var btn = document.getElementById("myBtn");
+
+				// Get the <span> element that closes the modal
+				var span = document.getElementsByClassName("close")[0];
+
+				// When the user clicks on the button, open the modal
+				btn.onclick = function() {
+				modal.style.display = "block";
+				}
+
+				// When the user clicks on <span> (x), close the modal
+				span.onclick = function() {
+				modal.style.display = "none";
+				}
+
+				// When the user clicks anywhere outside of the modal, close it
+				window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+		
+		});
 		// -----------------  스와이프   ----------------- //	
 		jQuery(function($) {
 			var swiper = new Swiper(".mySwiper", {
-				slidesPerView: 4,
+				effect: "coverflow",
+				grabCursor: true,
 				centeredSlides: true,
-				spaceBetween: 30,
+				slidesPerView: "auto",
+				coverflowEffect: {
+				rotate: 50,
+				stretch: 0,
+				depth: 100,
+				modifier: 1,
+					slideShadows: true,
+				},
 				pagination: {
 					el: ".swiper-pagination",
-					type: "fraction",
-				},
-				navigation: {
-					nextEl: ".swiper-button-next",
-					prevEl: ".swiper-button-prev",
 				},
 			});
-
-			var appendNumber = 4;
-			var prependNumber = 1;
-			
-			document
-				.querySelector(".prepend-2-slides")
-				.addEventListener("click", function (e) {
-				e.preventDefault();
-				swiper.prependSlide([
-					'<div class="swiper-slide">Slide ' + --prependNumber + "</div>",
-					'<div class="swiper-slide">Slide ' + --prependNumber + "</div>",
-				]);
-			});
-			document
-				.querySelector(".prepend-slide")
-				.addEventListener("click", function (e) {
-				e.preventDefault();
-				swiper.prependSlide(
-					'<div class="swiper-slide">Slide ' + --prependNumber + "</div>"
-				);
-			});
-			document
-				.querySelector(".append-slide")
-				.addEventListener("click", function (e) {
-				e.preventDefault();
-				swiper.appendSlide(
-					'<div class="swiper-slide">Slide ' + ++appendNumber + "</div>"
-				);
-			});
-			document
-				.querySelector(".append-2-slides")
-				.addEventListener("click", function (e) {
-				e.preventDefault();
-				swiper.appendSlide([
-					'<div class="swiper-slide">Slide ' + ++appendNumber + "</div>",
-					'<div class="swiper-slide">Slide ' + ++appendNumber + "</div>",
-				]);
-			});
-
 		});
+
+		// -----------------  파이차트   ----------------- //	
+		jQuery(function($) {
+			new Chart(document.getElementById("pie"), {
+				type: 'polarArea',
+				data: {
+				labels: ["Africa", "Asia", "Europe", "Latin America"],
+				datasets: [
+					{
+						label: "Population (millions)",
+						backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9"],
+						data: [2478,5267,734,784,433]
+						}
+					]
+				},
+					options: {
+					title: {
+						display: true,
+						text: 'Predicted world population (millions) in 2050'
+					}
+				}
+			});
+		});
+
 		// -----------------  검색키워드   ----------------- //
 		jQuery(function($) {
 			
@@ -153,30 +194,44 @@
 	<div class="main_contents">
 		<section class="top">
 			<div class="cont_1">
-				<div #swiperRef="" class="swiper mySwiper">
+				<!-- Swiper -->
+				<div class="swiper mySwiper">
 					<div class="swiper-wrapper">
-					    <div class="swiper-slide">Slide 1</div>
-					    <div class="swiper-slide">Slide 2</div>
-					    <div class="swiper-slide">Slide 3</div>
-					    <div class="swiper-slide">Slide 4</div>
+					  <div class="swiper-slide">
+						<img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+					  </div>
+					  <div class="swiper-slide">
+						<img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+					  </div>
+					  <div class="swiper-slide">
+						<img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+					  </div>
+					  <div class="swiper-slide">
+						<img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+					  </div>
+					  <div class="swiper-slide">
+						<img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+					  </div>
+					  <div class="swiper-slide">
+						<img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+					  </div>
+					  <div class="swiper-slide">
+						<img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+					  </div>
+					  <div class="swiper-slide">
+						<img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+					  </div>
+					  <div class="swiper-slide">
+						<img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+					  </div>
 					</div>
-					<div class="swiper-button-next"></div>
-					<div class="swiper-button-prev"></div>
 					<div class="swiper-pagination"></div>
 				</div>
-			  
-				<p class="append-buttons">
-					<button class="prepend-2-slides">Prepend 2 Slides</button>
-					<button class="prepend-slide">Prepend Slide</button>
-					<button class="append-slide">Append Slide</button>
-					<button class="append-2-slides">Append 2 Slides</button>
-				</p>
 				<a href="https://www.pcu.ac.kr/www/index/index.html" target="_blank;">
 					<video width="100%" id="" onpause="" muted playsinline autoplay loop poster="../pr_630_20210717.jpg">
 						<source src="../pr_630_20210717.mp4" type="video/mp4" />
 					</video>
 				</a>
-
 			</div>
 		</section>
 		<section class="center">
@@ -186,7 +241,7 @@
 					<span class="g">
 						<img src="../../images/flower.jpg"  alt="flower" />
 						<span class="overlay">
-							<a href="#1" class="text">POPUP</a>
+							<a href="#1" class="text" id="myBtn">POPUP</a>
 						</span>
 					</span>
 					</span>
@@ -195,7 +250,7 @@
 							<img src="../../images/flower.jpg"  alt="flower" />
 						</a>
 					</span>
-					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g example"><img src="../../images/flower.jpg"  alt="flower" /></span>
 					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
 					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
 					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
@@ -219,12 +274,34 @@
 				<div class="jqcloud" id="keword" style="width:100%; height:440px;"></div>
 			</div>
 			<div class="cont_4">
-				<h2>컨텐츠5</h2>
+				<canvas id="pie"></canvas>
 			</div>
 		</section>
+		<div class="snsBox">
+			<a href="http://naver.com" target="_blank;">Naver</a>
+			<a href="http://naver.com">Kakao</a>
+			<a href="http://naver.com"><i class="fab fa-instagram-square"></i></a>
+			<a href="http://naver.com"><i class="fab fa-youtube"></i></a>
+			<a href="http://naver.com"><i class="fab fa-facebook-square"></i></a>
+		</div>
 	</div>
 	<footer>
 		<address>(35345) 대전광역시 서구 배재로 155-40(도마동)</address>
 	</footer>
+	<div id="myModal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+			  <span class="close">&times;</span>
+			  <h2>Modal Header</h2>
+			</div>
+			<div class="modal-body">
+			  <p>Some text in the Modal Body</p>
+			  <p>Some other text...</p>
+			</div>
+			<div class="modal-footer">
+			  <h3>Modal Footer</h3>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

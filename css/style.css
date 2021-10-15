@@ -1,16 +1,19 @@
 @charset "utf-8";
 
-.hide {}
+.hide {display:none;}
+
 
 
 /* -------------------- LAYOUT(portal) -----------------------*/
 .portal footer {text-align:center; width:100%; line-height:100px; background:#dedede;}
 .portal header {
-	z-index:10; 
+	z-index:100; 
 	width:100%; 
 	height:60px; 
 	color:#fff;
-	position:relative; 
+	top:0;
+	position:sticky; 
+	position:-webkit-sticky; 
 	background: linear-gradient(to right, #5D26C1, #a17fe0, #59C173); 
 }
 
@@ -98,60 +101,73 @@
 .portal .main_contents .cont_6 {background:#f0d1ff;}
 .portal .main_contents .bottom {border-bottom:0; margin:0 auto; max-width:1200px;}
 
+.portal .snsBox {margin:40px auto; background:#f8f8f8; padding:20px 50px; border:1px solid #ccc; text-align:center;}
+.portal .snsBox > a {background:#eee; margin:0 10px; display:inline-block; width:55px; line-height:55px; border-radius:50%; border:1px solid #ccc;}
+.portal .snsBox > a > i {vertical-align:middle; font-size:35px;}
+
+.jconfirm .container {width:300px; margin:0 auto;}
 
 
-.swiper {
-	width: 100%;
-	height: 100%;
-	top:200px;
+/* The Modal (background) */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1000; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color:rgba(0,0,0,0.8);
+  }
+  
+
+/* Modal Content/Box */
+.modal-content {
+	top:50%;
+	left:50%;
 	position:absolute;
+	transform:translate(-50%, -50%);
+	background-color: #fefefe;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80vw; /* Could be more or less, depending on screen size */
+	height:calc(100vh - 200px);
 }
-.swiper-slide {
-	text-align: center;
-	font-size: 18px;
-	background: #fff;
 
-	/* Center slide text vertically */
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
-	-webkit-justify-content: center;
-	justify-content: center;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	-webkit-align-items: center;
-	align-items: center;
+/* The Close Button */
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
 }
-.swiper-slide img {
-	display: block;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+
+.close:hover,
+.close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
 }
+
 .swiper {
 	width: 100%;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+.swiper.mySwiper {z-index:10; position:absolute;}
+
+.swiper-slide {
+	background-position: center;
+	background-size: cover;
+	width: 300px;
 	height: 300px;
-	margin: 20px auto;
-}
-.append-buttons {
-	text-align: center;
-	margin-top: 20px;
-}
-.append-buttons button {
-	display: inline-block;
-	cursor: pointer;
-	border: 1px solid #007aff;
-	color: #007aff;
-	text-decoration: none;
-	padding: 4px 10px;
-	border-radius: 4px;
-	margin: 0 10px;
-	font-size: 13px;
 }
 
+.swiper-slide img {
+display: block;
+width: 100%;
+}
 
 
 
@@ -221,10 +237,11 @@
 	}
 }
 
-
-
 /* openDATA 크기 */
 #keword {margin:15px 0 0 0; font-size:20px; font-weight:300; line-height:1;}
+#keword span {transition:1s all;}
+#keword span:hover, 
+#keword span:active {transform:scale(1.2); }
 #keword span.w10 { font-size: 1.6em; font-weight:700;}
 #keword span.w9 { font-size: 1.5em; font-weight:700;}
 #keword span.w8 { font-size: 1.4em; font-weight:500;}
@@ -403,8 +420,8 @@
 .system .main_contents .right .btm {border-bottom:0;}
 .system .main_contents .right .btm  h3 {
 	font-size:16px; 
-	margin:25px 10px;
 	font-weight:normal;
+	margin:20px 10px 10px 10px;
 }
 .system .main_contents .right section > div {
 	flex:1;
@@ -448,7 +465,7 @@
 .system .flexBox.leftfix li:last-child table {border-left:0;}
 .system .flexBox.leftfix li:last-child {
 	overflow-x:auto;
-	width:calc(100% - 250px);
+	width:100%;
 	padding-left:250px;
 }
 
@@ -591,7 +608,6 @@
 	background:red;
 	border-radius:50%;
 }
-
 .background{
 	width:100%;
 	height:300px;
@@ -794,13 +810,12 @@ select option {font-weight:200;}
 /* jQuery-ui */
 
 	/* 달력 */
-
 	.system .ui-widget {font-family: 'Noto Sans', sans-serif; border-radius:0; box-shadow:1px 2px 4px #ccc; border:0;}
 	.system .ui-datepicker {padding:0;}
 	.system .ui-datepicker .ui-datepicker-title {margin:0;  line-height:45px;}
 	.system .ui-datepicker .ui-datepicker-prev, 
 	.system .ui-datepicker .ui-datepicker-next {width:2.2em; height:2.2em; top:10px; border:1px solid #ccc;}
-	.system .ui-datepicker .ui-datepicker-prev {left:15px;}
+	.system .ui-dat85epicker .ui-datepicker-prev {left:15px;}
 	.system .ui-datepicker .ui-datepicker-next {right:15px;}
 	.system .ui-datepicker .ui-datepicker-header {height:45px; font-size:0.750em; color:#000; font-weight:200; padding:0; background:#f7f7f7; border:0;}
 	

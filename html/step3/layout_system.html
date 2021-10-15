@@ -34,6 +34,16 @@
 			});
 		});
 
+		// -----------------  경고창 ----------------- //
+		jQuery(function($) {
+			$('.example').on('click', function(){
+				$.alert({
+					title: 'Alert!',
+					content: 'Simple alert!',
+				});
+			});
+		});
+
 		// -----------------  탭메뉴 ----------------- //
 		jQuery(function($) {
 			$(".tab dt > a").bind("focus click",function(e){
@@ -43,6 +53,31 @@
 		        $(this).parent().next().show();
 				$('.tab dt > a').removeClass('on').eq(i).addClass('on');
 		    });
+
+			$('.example1').on('click', function(){
+				$.alert({
+					title: 'Alert!',
+					content: 'Simple alert!',
+				});
+			});
+		});
+
+		// -----------------  탭메뉴 ----------------- //
+		jQuery(function($) {
+			$(".tab dt > a").bind("focus click",function(e){
+		        var i = $('.tab dt > a').index(this);
+		        $(".box").hide();
+
+		        $(this).parent().next().show();
+				$('.tab dt > a').removeClass('on').eq(i).addClass('on');
+		    });
+
+			$('.example1').on('click', function(){
+				$.alert({
+					title: 'Alert!',
+					content: 'Simple alert!',
+				});
+			});
 		});
 
 		// -----------------  달력 ----------------- //
@@ -76,27 +111,27 @@
 				data: {
 				labels: ["1900", "1950", "1999", "2050"],
 				datasets: [{
-					label: "Europe",
-					type: "line",
-					borderColor: "#3e95cd",
-					data: [408,547,675,734],
-					fill: false
+						label: "Europe",
+						type: "line",
+						borderColor: "#3e95cd",
+						data: [408,547,675,734],
+						fill: false
 					}, {
-					label: "Africa",
-					type: "line",
-					borderColor: "#c45850",
-					data: [133,221,783,2478],
-					fill: false
+						label: "Africa",
+						type: "line",
+						borderColor: "#c45850",
+						data: [133,221,783,2478],
+						fill: false
 					}, {
-					label: "Europe",
-					type: "bar",
-					backgroundColor: "#59C173",
-					data: [408,547,675,734],
+						label: "Europe",
+						type: "bar",
+						backgroundColor: "#59C173",
+						data: [408,547,675,734],
 					}, {
-					label: "Africa",
-					type: "bar",
-					backgroundColor: "#a17fe0",
-					data: [133,221,783,2478]
+						label: "Africa",
+						type: "bar",
+						backgroundColor: "#a17fe0",
+						data: [133,221,783,2478]
 					}
 				]
 				},
@@ -454,9 +489,9 @@
 									<p class="chk-box"> 
 										<input name="" type="checkbox" id="choice11" value="1" title=""  checked/> 
 										<label for="choice11">1</label>
-										<input name="" type="checkbox" id="choice22" value="2" title="" />
+										<input name="" type="checkbox" id="choice22" value="2" title="" disabled/>
 										<label for="choice22">2</label>
-										<input name="" type="checkbox" id="choice33" value="2" title="" />
+										<input name="" type="checkbox" id="choice33" value="2" title="" checked disabled/>
 										<label for="choice33">3</label>
 										<input name="" type="checkbox" id="choice44" value="2" title="" />
 										<label for="choice44">4</label>
@@ -477,7 +512,7 @@
 									<form action="서버주소입력" method="POST" name="memberJoin" class="formBox">
 										<label for="comment" class="hide">가입인사</label><br>
 										<textarea id="comment" cols="30" rows="4" wrap="hard" required="required" placeholder="가입인사를 남겨주세요."></textarea>
-										<input type="submit" value="전송">
+										<input type="submit" value="전송" class="example">
 									</form>
 								</td>
 							</tr>
