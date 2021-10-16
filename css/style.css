@@ -12,8 +12,7 @@
 	height:60px; 
 	color:#fff;
 	top:0;
-	position:sticky; 
-	position:-webkit-sticky; 
+	position:fixed; 
 	background: linear-gradient(to right, #5D26C1, #a17fe0, #59C173); 
 }
 
@@ -32,11 +31,17 @@
 	background:url(../images/logo.png) 0 50% no-repeat;
 	background-size:100%;
 }
+
+.portal .search {
+	position: absolute;
+    right: 20px;
+    top: 14px;
+}
 .portal .menu {height:100%;}
 .portal .menu > ul {
 	height:100%; 
 	display:flex;
-	padding:0 152px; 
+	padding:0 310px 0 152px; 
 	align-items:center; 
 }
 .portal .menu ul > li {
@@ -85,6 +90,9 @@
 	width:100%; 
 	display:inline-block;
 }
+.portal .main_contents .top {
+	margin-top:60px;
+} 
 .portal .main_contents .top, 
 .portal .main_contents .center, 
 .portal .main_contents .bottom {
@@ -96,15 +104,64 @@
 .portal .main_contents .cont_1 {background:#ffebeb;}
 .portal .main_contents .cont_2 {background:#f8f8f8; max-width:1200px;}
 .portal .main_contents .cont_3 {background:#fff7c7; max-width:1200px;}
-.portal .main_contents .cont_4 {background:#f5ffea;}
+.portal .main_contents .cont_4 {background:#f5ffea; padding:50px;}
 .portal .main_contents .cont_5 {background:#dbfffd;}
 .portal .main_contents .cont_6 {background:#f0d1ff;}
 .portal .main_contents .bottom {border-bottom:0; margin:0 auto; max-width:1200px;}
 
-.portal .snsBox {margin:40px auto; background:#f8f8f8; padding:20px 50px; border:1px solid #ccc; text-align:center;}
+.portal .snsBox {margin:40px auto; padding:40px 0; text-align:center;}
 .portal .snsBox > a {background:#eee; margin:0 10px; display:inline-block; width:55px; line-height:55px; border-radius:50%; border:1px solid #ccc;}
 .portal .snsBox > a > i {vertical-align:middle; font-size:35px;}
 
+
+body.gnb_open {margin-left:250px; overflow:hidden;}
+
+body.gnb_open .sidenav {width:250px;}
+
+.openBtn {
+	position:absolute;
+	top:15px; 
+	right:25px;
+	font-size:25px; 
+	cursor:pointer;
+	display:none;
+}
+.sidenav {
+	height: 100%; /* 100% Full-height */
+	width: 0; /* 0 width - change this with JavaScript */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Stay on top */
+	top: 0; /* Stay at the top */
+	left: 0;
+	background-color: #111; /* Black*/
+	overflow-x: hidden; /* Disable horizontal scroll */
+	padding-top: 60px; /* Place content 60px from the top */
+	transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+	color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
 .jconfirm .container {width:300px; margin:0 auto;}
 
 
@@ -149,33 +206,11 @@
 	text-decoration: none;
 	cursor: pointer;
 }
-
-.swiper {
-	width: 100%;
-	padding-top: 50px;
-	padding-bottom: 50px;
-}
-.swiper.mySwiper {z-index:10; position:absolute;}
-
-.swiper-slide {
-	background-position: center;
-	background-size: cover;
-	width: 300px;
-	height: 300px;
-}
-
-.swiper-slide img {
-display: block;
-width: 100%;
-}
-
-
-
-
 .portal .main_contents {border-right:1px solid #eee;}
 .portal .main_contents div {flex:1; margin:0 auto;}
 .portal .main_contents div > section:last-child {border-right:0;}
 
+.portal .allmenu {display:none;}
 .portal .gridBox {
 	display:grid;
 	line-height:0;
@@ -221,21 +256,102 @@ width: 100%;
 	text-align: center;
   }
 
+
+.portal .topBtn a:hover {
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.portal .topBtn a {
+	position:fixed;
+	bottom:30px;
+	right:30px;
+	width:50px;
+	line-height:50px;
+	border-radius:50%;
+	background:#a17fe0;
+	text-align:center;
+	color:#fff;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+
 @media (max-width: 1100px){
 	.portal .gridBox {
 		display:grid;
 		line-height:0;
 		grid-template-columns:repeat(4, 1fr);
 	}
+	.portal .main_contents .bottom {display:block;}
 }
 
-@media (max-width: 700px){
+@media (max-width: 768px){
+
+	.openBtn {display:block;}
+	.portal header {
+		text-align:center;
+		padding-top:50px;
+	}
+	.portal .menu {
+		margin-top:10px;
+		height:100px;
+		background:#fff;
+	} 
+	.portal .menu > ul {
+		display:block;
+		padding:0;
+	}
+	.portal .menu > ul > li {
+		display:inline-block;
+		line-height:50px;
+		height:50px;
+		float:left;
+		color:#a17fe0;
+		border:1px solid #a17fe0;
+		width:33.33333%;
+	}
+	.portal .menu > ul > li:nth-child(4){
+		clear:left;
+	}
+    .portal .search {
+		position:absolute;
+		left:50%;
+		transform:translate(-50%,0);
+	}
+	.portal .search input {padding:0 15px;}
+	.portal .search .search_btn {
+		background:#a17fe0;
+		color:#fff;
+		cursor:pointer;
+	}
 	.portal .gridBox {
 		display:grid;
 		line-height:0;
 		grid-template-columns:repeat(3, 1fr);
+	} 
+	.portal .menu ul > li:hover .submenu,
+	.portal .menu ul > li:active .submenu {display:none;}
+	
+	.portal .allmenu {display:block;}
+	.portal .allmenu dd {display:none; transition:3s all;}
+	.portal .allmenu dd.on {
+		display:flex;
+		width:100%;
+		background:#fff;
+		color:#000;
 	}
+	.portal .allmenu dd.on li {
+		height:auto;
+	}
+	.portal .allmenu dt {width:100%; color:#fff; background:#a17fe0;}
 }
+
+@media (max-width: 500px){
+	.portal .gridBox {
+		display:grid;
+		line-height:0;
+		grid-template-columns:repeat(1, 1fr);
+	} 
+}	
+
 
 /* openDATA 크기 */
 #keword {margin:15px 0 0 0; font-size:20px; font-weight:300; line-height:1;}
@@ -815,7 +931,7 @@ select option {font-weight:200;}
 	.system .ui-datepicker .ui-datepicker-title {margin:0;  line-height:45px;}
 	.system .ui-datepicker .ui-datepicker-prev, 
 	.system .ui-datepicker .ui-datepicker-next {width:2.2em; height:2.2em; top:10px; border:1px solid #ccc;}
-	.system .ui-dat85epicker .ui-datepicker-prev {left:15px;}
+	.system .ui-datepicker .ui-datepicker-prev {left:15px;}
 	.system .ui-datepicker .ui-datepicker-next {right:15px;}
 	.system .ui-datepicker .ui-datepicker-header {height:45px; font-size:0.750em; color:#000; font-weight:200; padding:0; background:#f7f7f7; border:0;}
 	
@@ -825,7 +941,7 @@ select option {font-weight:200;}
 	.system .ui-datepicker select.ui-datepicker-month {margin-left:10px; width:65px;}
 	.system .ui-datepicker table {width:85%; margin:0 auto; margin-bottom:0.5em;}
 	.system .ui-datepicker table th {font-weight:300; border-bottom:1px solid #e2e2e2;}
-	.system .ui-datepicker table td {padding:3px 5px;}
+	.system .ui-datepicker table td {padding:4px 5.5px;}
 	.system .ui-datepicker table tr:first-child td {padding-top:0.5em;}
 	.system .ui-datepicker table td.ui-datepicker-week-end:first-child a {color:#d04602;}
 	

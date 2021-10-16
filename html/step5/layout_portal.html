@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>풀스택개발자를 위한 웹퍼블리싱 | 배재대학교</title>
+	<script type="text/javascript" src="../../js/js.js" ></script>
+	<link rel="stylesheet" type="text/css" href="../../css/css.css" />
+	<script type="text/javascript" >
+
+		// -----------------  전체보기   ----------------- //	
+		jQuery(function($) {
+			
+			$(".allmenu > dt > a").click(function(e){
+				$(".allmenu dd").toggleClass('on')
+			});
+
+			$('header .openBtn').click(function(){
+				$('body').addClass('gnb_open')
+				return false;
+			})
+		
+			$('.sidenav .closebtn'). click(function(){
+				$('body').removeClass('gnb_open')
+				return false;
+			})
+
+			var $input = $(".input"),
+	    		$clear = $(".clear");
+	    
+				$input.keyup(function(){
+					$(".clear").toggle(Boolean($(this).val()));
+				});
+				
+				$clear.toggle(Boolean($input.val()));
+				$clear.click(function(){
+					$(".input").val('').focus();
+					$(this).hide();
+					
+				});
+			
+		});
+
+		// -----------------  스크롤탑   ----------------- //	
+		jQuery(function($) {
+
+			var $ = jQuery.noConflict();
+			jQuery(document).ready(function($){
+				scrollToTop.init();
+			});
+
+			var scrollToTop ={
+				init: function(){
+					
+				$(window).scroll(function(){
+					if ($(this).scrollTop() > 100) {
+						$('.topBtn a').fadeIn();
+				} else {
+					$('.topBtn a').fadeOut();
+					}
+				});
+				
+				$('.topBtn a').click(function(){
+					$('html, body').animate({scrollTop : 0}, 300);
+					return false;
+				});
+			}};
+		});
+		
+		// -----------------  컨펌   ----------------- //	
+		jQuery(function($) {
+			$('.example').on('click', function(){
+				
+				$.confirm({
+					title: '이름을 입력해주세요!',
+					content: '이름을 입력하셔야 다음페이지로 이동합니다.',
+					type: 'purple',
+					typeAnimated: true,
+					buttons: {
+						tryAgain: {
+							text: 'Try again',
+							btnClass: 'btn-purple',
+							action: function(){
+							}
+						},
+						close: function () {
+						}
+					}
+				});
+			});
+		});
+
+
+		// -----------------  모달팝업   ----------------- //	
+		jQuery(function($) {
+				var modal = document.getElementById("myModal");
+				var btn = document.getElementById("myBtn");
+				var span = document.getElementsByClassName("close")[0];
+
+				btn.onclick = function() {
+					modal.style.display = "block";
+				}
+
+				span.onclick = function() {
+					modal.style.display = "none";
+				}
+
+				window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+		});
+
+
+		// -----------------  스와이프   ----------------- //	
+		jQuery(function($) {
+		
+		});
+
+		// -----------------  파이차트   ----------------- //	
+		jQuery(function($) {
+			new Chart(document.getElementById("pie"), {
+				type: 'polarArea',
+				data: {
+				labels: ["Africa", "Asia", "Europe", "Latin America"],
+				datasets: [
+					{
+						label: "Population (millions)",
+						backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9"],
+						data: [2478,5267,734,784,433]
+						}
+					]
+				},
+					options: {
+					title: {
+						display: true,
+						text: 'Predicted world population (millions) in 2050'
+					}
+				}
+			});
+		});
+
+		// -----------------  검색키워드   ----------------- //
+		jQuery(function($) {
+			
+			var words = [
+				{text: "일자리계획", weight: 10, html: {"class": "open_no01"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "정보공개", weight: 10, html: {"class": "open_no02"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "대학수학능력시험", weight: 8, html: {"class": "open_no03"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "4차산업혁명", weight: 8, html: {"class": "open_no04"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "연구계획", weight: 7, html: {"class": "open_no04"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "소비자", weight: 7, html: {"class": "open_no05"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "공공데이터활용법", weight: 7, html: {"class": "open_no05"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "정보보안", weight: 7, html: {"class": "open_no05"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "조직도", weight: 5, html: {"class": "open_no06"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "문화", weight: 5, html: {"class": "open_no06"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "조직도", weight: 5, html: {"class": "open_no06"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "중국발미세먼지", weight: 6, html: {"class": "open_no06"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "사물인터넷", weight: 5, html: {"class": "open_no06"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "소비자", weight: 5, html: {"class": "open_no06"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "공공데이터활용법", weight: 4, html: {"class": "open_no06"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "정보보안", weight: 4, html: {"class": "open_no07"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "인공지능", weight: 4, html: {"class": "open_no07"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "조직도", weight: 4, html: {"class": "open_no07"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "중국발미세먼지", weight: 3, html: {"class": "open_no07"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "사물인터넷", weight: 3, html: {"class": "open_no07"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "청주택", weight: 3, html: {"class": "open_no07"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "환경", weight: 2, html: {"class": "open_no08"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "청수당", weight: 2, html: {"class": "open_no08"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "일자리단절정책", weight: 2, html: {"class": "open_no08"}, link: {href: "http://jquery.com/", target: "_blank"}},
+				{text: "육아", weight: 2, html: {"class": "open_no08"}, link: {href: "http://jquery.com/", target: "_blank"}}
+			];	 
+			
+			$("#keword").jQCloud(words);
+			
+		});
+	</script>
+</head>
+<body id="main" class="portal main">
+	<header>
+		<h1 class="logo" onclick="location.href='/html/step3/layout_system.html'">
+			new start 배재 ai,sw 중점대학 로고
+			<!-- <img src="../../images/logo.png" alt="new start 배재 ai,sw 중점대학 로고" width="152px" height="76px" /> -->
+		</h1>
+		<span class="search">
+			<input type="text" autocomplete="off" placeholder="검색어를 입력해주세요." />
+			<input type="submit" value="검색" class="search_btn" />
+		</span>
+		<span class="openBtn"><i class="fas fa-align-justify"></i></span>
+		<nav class="menu">
+			<ul>
+				<li><a href="#">STEP1</a>
+					<ul class="submenu">
+						<li><a href="../intro.html">Intro</a></li>
+						<li><a href="../step1/link.html">Link</a></li>
+					</ul>
+				</li>
+				<li><a href="#">STEP2</a>
+					<ul class="submenu">
+						<li><a href="../step2/layout_system.html">Layout_system</a></li>
+						<li><a href="../step2/link.html">Link</a></li>
+					</ul>
+				</li>
+				<li><a href="#">STEP3</a>
+					<ul class="submenu">
+						<li><a href="../step3/layout_system.html">Layout_system</a></li>
+						<li><a href="../step3/link.html">Link</a></li>
+					</ul>
+				</li>
+				<li><a href="#">STEP4</a>
+					<ul class="submenu">
+						<li><a href="#">메뉴1-2</a></li>
+						<li><a href="#">메뉴1-2</a></li>
+						<li><a href="#">메뉴1-2</a></li>
+					</ul>
+				</li>
+				<li><a href="#">STEP5</a>
+					<ul class="submenu">
+						<li><a href="#">메뉴1-2</a></li>
+						<li><a href="#">메뉴1-2</a></li>
+						<li><a href="#">메뉴1-2</a></li>
+					</ul>
+				</li>
+				<li><a href="#">STEP6</a>
+					<ul class="submenu">
+						<li><a href="#">메뉴1-2</a></li>
+						<li><a href="#">메뉴1-2</a></li>
+						<li><a href="#">메뉴1-2</a></li>
+					</ul>
+				</li>
+			</ul>
+			<dl class="allmenu">
+				<dt><a href="#">전체메뉴</a></dt>
+				<dd>
+					<ul>
+						<li>STEP1</li>
+						<li>STEP2</li>
+						<li>STEP3</li>
+						<li>STEP4</li>
+						<li>STEP5</li>
+						<li>STEP6</li>
+					</ul>
+				</dd>
+			</dl>
+			<div id="mySidenav" class="sidenav">
+				<a class="closebtn" onclick="closeNav()">&times;</a>
+				<a href="#">STEP1</a>
+				<a href="#">STEP2</a>
+				<a href="#">STEP3</a>
+				<a href="#">STEP4</a>
+				<a href="#">STEP5</a>
+				<a href="#">STEP6</a>
+			</div>
+		</nav>
+	</header>
+	<div class="main_contents">
+		<section class="top">
+			<div class="cont_1">
+				<!-- Swiper -->
+				<a href="https://www.pcu.ac.kr/www/index/index.html" target="_blank;">
+					<video width="100%" id="" onpause="" muted playsinline autoplay loop poster="../pr_630_20210717.jpeg">
+						<source src="../pr_630_20210717.mp4" type="video/mp4" />
+					</video>
+				</a>
+			</div>
+		</section>
+		<section class="center">
+			<div class="cont_2">
+				<div class="gridBox">
+					<span class="g">
+						<img src="../../images/flower.jpg"  alt="flower" />
+						<span class="overlay">
+							<a href="#1" class="text" id="myBtn">POPUP</a>
+						</span>
+					</span>
+					</span>
+					<span class="g">
+						<a href="../../images/flower.jpg" target="_blank;">
+							<img src="../../images/flower.jpg"  alt="flower" />
+						</a>
+					</span>
+					<span class="g example"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+					<span class="g"><img src="../../images/flower.jpg"  alt="flower" /></span>
+				</div>
+			</div>
+		</section>
+		<section class="bottom">
+			<div class="cont_3">
+				<div class="jqcloud" id="keword" style="width:100%; height:440px;"></div>
+			</div>
+			<div class="cont_4">
+				<canvas id="pie"></canvas>
+			</div>
+		</section>
+		<div class="snsBox">
+			<a href="http://naver.com" target="_blank;">Naver</a>
+			<a href="http://naver.com">Kakao</a>
+			<a href="http://naver.com"><i class="fab fa-instagram-square"></i></a>
+			<a href="http://naver.com"><i class="fab fa-youtube"></i></a>
+			<a href="http://naver.com"><i class="fab fa-facebook-square"></i></a>
+		</div>
+		<div class="topBtn"><a href="#">TOP</a></div>
+	</div>
+	<footer>
+		<address>(35345) 대전광역시 서구 배재로 155-40(도마동)</address>
+	</footer>
+	<div id="myModal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+			  <span class="close">&times;</span>
+			  <h2>Modal Header</h2>
+			</div>
+			<div class="modal-body">
+			  <p>Some text in the Modal Body</p>
+			  <p>Some other text...</p>
+			</div>
+			<div class="modal-footer">
+			  <h3>Modal Footer</h3>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
