@@ -36,12 +36,13 @@
 
 		// -----------------  경고창 ----------------- //
 		jQuery(function($) {
-			$('.example').on('click', function(){
+			$('.alert').on('click', function(){
 				$.alert({
-					title: 'Alert!',
-					content: 'Simple alert!',
+					title: '전송되었습니다!',
+					content: '확인을 눌러주세요',
 				});
 			});
+
 		});
 
 		// -----------------  탭메뉴 ----------------- //
@@ -53,31 +54,6 @@
 		        $(this).parent().next().show();
 				$('.tab dt > a').removeClass('on').eq(i).addClass('on');
 		    });
-
-			$('.example1').on('click', function(){
-				$.alert({
-					title: 'Alert!',
-					content: 'Simple alert!',
-				});
-			});
-		});
-
-		// -----------------  탭메뉴 ----------------- //
-		jQuery(function($) {
-			$(".tab dt > a").bind("focus click",function(e){
-		        var i = $('.tab dt > a').index(this);
-		        $(".box").hide();
-
-		        $(this).parent().next().show();
-				$('.tab dt > a').removeClass('on').eq(i).addClass('on');
-		    });
-
-			$('.example1').on('click', function(){
-				$.alert({
-					title: 'Alert!',
-					content: 'Simple alert!',
-				});
-			});
 		});
 
 		// -----------------  달력 ----------------- //
@@ -233,38 +209,40 @@
 		// -----------------  레프트메뉴 ----------------- //
 		jQuery(function($) {
 			var lnbUI = {
+				
 				click : function (target, speed) {
 				var _self = this,
-					$target = $(target);
-				_self.speed = speed || 300;
-				
-				$target.each(function(){
-					if(findChildren($(this))) {
-					return;
-					}
-					$(this).addClass('noDepth');
-				});
-				
-				function findChildren(obj) {
-					return obj.find('> ul').length > 0;
-				}
-				$target.on('click','a', function(e){
-					e.stopPropagation();
-
-					var $this = $(this),
-						$depthTarget = $this.next(),
-						$siblings = $this.parent().siblings();
-						$this.parent('li').find('ul li').removeClass('on');
-						$siblings.removeClass('on');
-						$siblings.find('ul').slideUp(250);
 					
-					if($depthTarget.css('display') == 'none') {
-						_self.activeOn($this);
-						$depthTarget.slideDown(_self.speed);
-					} else {
-						$depthTarget.slideUp(_self.speed);
-						_self.activeOff($this);
-					}	
+					$target = $(target);
+					_self.speed = speed || 300;
+					
+					$target.each(function(){
+						if(findChildren($(this))) {
+							return;
+						}
+						$(this).addClass('noDepth');
+					});
+					
+					function findChildren(obj) {
+						return obj.find('> ul').length > 0;
+					}
+					$target.on('click','a', function(e){
+						e.stopPropagation();
+
+						var $this = $(this),
+							$depthTarget = $this.next(),
+							$siblings = $this.parent().siblings();
+							$this.parent('li').find('ul li').removeClass('on');
+							$siblings.removeClass('on');
+							$siblings.find('ul').slideUp(250);
+						
+						if($depthTarget.css('display') == 'none') {
+							_self.activeOn($this);
+							$depthTarget.slideDown(_self.speed);
+						} else {
+							$depthTarget.slideUp(_self.speed);
+							_self.activeOff($this);
+						}	
 					})
 				},
 				activeOff : function($target) {
@@ -512,7 +490,7 @@
 									<form action="서버주소입력" method="POST" name="memberJoin" class="formBox">
 										<label for="comment" class="hide">가입인사</label><br>
 										<textarea id="comment" cols="30" rows="4" wrap="hard" required="required" placeholder="가입인사를 남겨주세요."></textarea>
-										<input type="submit" value="전송" class="example">
+										<input type="submit" value="전송" class="alert" />
 									</form>
 								</td>
 							</tr>

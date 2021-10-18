@@ -8,7 +8,7 @@
     <script type="text/javascript" src="js/js.js" ></script>
     <link rel="stylesheet" type="text/css" href="css/css.css" />
     <style>
-        .menuWrap {height:100%;}
+        .menuWrap {height:100%; position:relative; overflow:hidden;}
         .menuWrap .sub {
             right:10px;
             font-size:14px; 
@@ -38,8 +38,10 @@
         }
         .menuWrap h1 {
             margin:0;
+            width:100%;
             padding:0 10px;
             line-height:55px; 
+            position:absolute;
             border-bottom:1px solid #ccc;
         }
         .menuWrap h1 a {
@@ -48,6 +50,7 @@
             font-weight:300;
             text-decoration:none;
         }
+        .menuBox {overflow-y:auto; position:relative; top:61px; height:calc(100% - 61px);}
         .menuBox li strong {color:#000; text-indent:10px; display:block; border-bottom:1px solid #dbdbdb; padding:20px 0;}
         .menuBox li strong b {color:#333; font-weight:300;}
         .menuBox li ul li {font-size:14px; text-indent:10px; line-height:35px; background:#f8f8f8;}
@@ -77,7 +80,6 @@
                 <ul>
                     <li><a href="html/step2/html_sample.html" target="ifrhowl">Html5</a></li>
                     <li><a href="html/step2/css_sample.html" target="ifrhowl">Css3</a></li>
-                    <li><a href="html/step2/test.html" target="ifrhowl">test</a></li>
                     <li><a href="html/step2/layout_portal.html" target="ifrhowl">Layout (Portal)</a></li>
                     <li><a href="html/step2/layout_system.html" target="ifrhowl">Layout (System)</a></li>
                     <li><a href="html/step2/link.html" target="ifrhowl">Site Link</a></li>
@@ -98,10 +100,12 @@
             <li><strong>STEP5_<b>적응형 및 반응형 대응하기</b></strong>
                 <ul>
                     <li><a href="html/step5/layout_portal.html" target="ifrhowl">Layout (portal)</a></li>
+                    <li><a href="html/step5/link.html" target="ifrhowl">Site Link</a></li>
                 </ul>
             </li>
             <li><strong>STEP6_<b>오픈소스 및 라이브러리 활용</b></strong>
                 <ul>
+                    <li><a href="html/step6/link.html" target="ifrhowl">Site Link</a></li>
                 </ul>
             </li>
         </ul>

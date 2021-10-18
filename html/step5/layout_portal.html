@@ -9,40 +9,66 @@
 	<link rel="stylesheet" type="text/css" href="../../css/css.css" />
 	<script type="text/javascript" >
 
-		// -----------------  전체보기   ----------------- //	
+		// -----------------  header영역   ----------------- //	
 		jQuery(function($) {
-			
-			$(".allmenu > dt > a").click(function(e){
+
+			// 전체메뉴 열기/닫기
+			$("header .allmenu dt a").click(function(e){
 				$(".allmenu dd").toggleClass('on')
 			});
+			
+			// 다른영역 클릭시, 전체메뉴 닫힘
+			$(document).mouseup(function (e){
+				var allmenu = $(".allmenu dt, .allmenu dd");
+				if(allmenu.has(e.target).length === 0){
+					allmenu.removeClass('on');
+				}
+			});
 
+			// 모바일메뉴 열기
 			$('header .openBtn').click(function(){
 				$('body').addClass('gnb_open')
 				return false;
 			})
-		
-			$('.sidenav .closebtn'). click(function(){
+
+			// 모바일메뉴 닫기
+			$('header .sidenav .closebtn'). click(function(){
 				$('body').removeClass('gnb_open')
 				return false;
 			})
 
-			var $input = $(".input"),
-	    		$clear = $(".clear");
-	    
+			// 검색영역 클리어 추가
+			var $input = $(".search_input"),
+				$clear = $(".clear");
+		
 				$input.keyup(function(){
 					$(".clear").toggle(Boolean($(this).val()));
 				});
 				
 				$clear.toggle(Boolean($input.val()));
 				$clear.click(function(){
-					$(".input").val('').focus();
+					$(".search_input").val('').focus();
 					$(this).hide();
-					
 				});
-			
 		});
-
-		// -----------------  스크롤탑   ----------------- //	
+		
+		// -----------------  스와이프   ----------------- //	
+		jQuery(function($) {
+			var swiper = new Swiper(".mySwiper", {
+					speed: 600,
+					parallax: true,
+					pagination: {
+					el: ".swiper-pagination",
+					clickable: true,
+				},
+				navigation: {
+					nextEl: ".swiper-button-next",
+					prevEl: ".swiper-button-prev",
+				},
+			});
+		});
+		
+		// -----------------  스크롤 탑 ----------------- //	
 		jQuery(function($) {
 
 			var $ = jQuery.noConflict();
@@ -91,11 +117,10 @@
 			});
 		});
 
-
 		// -----------------  모달팝업   ----------------- //	
 		jQuery(function($) {
-				var modal = document.getElementById("myModal");
 				var btn = document.getElementById("myBtn");
+				var modal = document.getElementById("myModal");
 				var span = document.getElementsByClassName("close")[0];
 
 				btn.onclick = function() {
@@ -112,7 +137,6 @@
 				}
 			}
 		});
-
 
 		// -----------------  스와이프   ----------------- //	
 		jQuery(function($) {
@@ -174,56 +198,56 @@
 			];	 
 			
 			$("#keword").jQCloud(words);
-			
 		});
 	</script>
 </head>
-<body id="main" class="portal main">
+<body id="main" class="portal">
 	<header>
-		<h1 class="logo" onclick="location.href='/html/step3/layout_system.html'">
+		<h1 class="logo" onclick="location.href='/html/step5/layout_portal.html'">
 			new start 배재 ai,sw 중점대학 로고
 			<!-- <img src="../../images/logo.png" alt="new start 배재 ai,sw 중점대학 로고" width="152px" height="76px" /> -->
 		</h1>
 		<span class="search">
-			<input type="text" autocomplete="off" placeholder="검색어를 입력해주세요." />
+			<input type="text" autocomplete="off" class="search_input" placeholder="검색어를 입력해주세요." />
+			<span class="clear"><i class="fas fa-plus"></i></span>
 			<input type="submit" value="검색" class="search_btn" />
 		</span>
-		<span class="openBtn"><i class="fas fa-align-justify"></i></span>
+		<span class="openBtn hide"><i class="fas fa-align-justify"></i></span>
 		<nav class="menu">
 			<ul>
-				<li><a href="#">STEP1</a>
+				<li><a href="#1">STEP1</a>
 					<ul class="submenu">
 						<li><a href="../intro.html">Intro</a></li>
 						<li><a href="../step1/link.html">Link</a></li>
 					</ul>
 				</li>
-				<li><a href="#">STEP2</a>
+				<li><a href="#2">STEP2</a>
 					<ul class="submenu">
 						<li><a href="../step2/layout_system.html">Layout_system</a></li>
 						<li><a href="../step2/link.html">Link</a></li>
 					</ul>
 				</li>
-				<li><a href="#">STEP3</a>
+				<li><a href="#3">STEP3</a>
 					<ul class="submenu">
 						<li><a href="../step3/layout_system.html">Layout_system</a></li>
 						<li><a href="../step3/link.html">Link</a></li>
 					</ul>
 				</li>
-				<li><a href="#">STEP4</a>
+				<li><a href="#4">STEP4</a>
 					<ul class="submenu">
 						<li><a href="#">메뉴1-2</a></li>
 						<li><a href="#">메뉴1-2</a></li>
 						<li><a href="#">메뉴1-2</a></li>
 					</ul>
 				</li>
-				<li><a href="#">STEP5</a>
+				<li><a href="#5">STEP5</a>
 					<ul class="submenu">
 						<li><a href="#">메뉴1-2</a></li>
 						<li><a href="#">메뉴1-2</a></li>
 						<li><a href="#">메뉴1-2</a></li>
 					</ul>
 				</li>
-				<li><a href="#">STEP6</a>
+				<li><a href="#6">STEP6</a>
 					<ul class="submenu">
 						<li><a href="#">메뉴1-2</a></li>
 						<li><a href="#">메뉴1-2</a></li>
@@ -234,34 +258,73 @@
 			<dl class="allmenu">
 				<dt><a href="#">전체메뉴</a></dt>
 				<dd>
-					<ul>
-						<li>STEP1</li>
-						<li>STEP2</li>
-						<li>STEP3</li>
-						<li>STEP4</li>
-						<li>STEP5</li>
-						<li>STEP6</li>
-					</ul>
+					<a href="#1">STEP1</a>
+					<a href="#2">STEP2</a>
+					<a href="#3">STEP3</a>
+					<a href="#4">STEP4</a>
+					<a href="#5">STEP5</a>
+					<a href="#6">STEP6</a>
 				</dd>
 			</dl>
-			<div id="mySidenav" class="sidenav">
-				<a class="closebtn" onclick="closeNav()">&times;</a>
-				<a href="#">STEP1</a>
-				<a href="#">STEP2</a>
-				<a href="#">STEP3</a>
-				<a href="#">STEP4</a>
-				<a href="#">STEP5</a>
-				<a href="#">STEP6</a>
-			</div>
+		</nav>
+		<nav class="sidenav">
+			<a class="closebtn">&times;</a>
+			<a href="#1">STEP1</a>
+			<a href="#2">STEP2</a>
+			<a href="#3">STEP3</a>
+			<a href="#4">STEP4</a>
+			<a href="#5">STEP5</a>
+			<a href="#6">STEP6</a>
 		</nav>
 	</header>
 	<div class="main_contents">
 		<section class="top">
 			<div class="cont_1">
 				<!-- Swiper -->
+				<div class="swiper mySwiper">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+						<div class="title" data-swiper-parallax="-300">Slide 1</div>
+						<div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
+						<div class="text" data-swiper-parallax="-100">
+							<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+							dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
+							laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
+							</p>
+						</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="title" data-swiper-parallax="-300">Slide 2</div>
+							<div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
+							<div class="text" data-swiper-parallax="-100">
+								<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+								dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
+								laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
+								</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="title" data-swiper-parallax="-300">Slide 3</div>
+							<div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
+							<div class="text" data-swiper-parallax="-100">
+								<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+								Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod.
+								Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-pagination"></div>
+				</div>
 				<a href="https://www.pcu.ac.kr/www/index/index.html" target="_blank;">
-					<video width="100%" id="" onpause="" muted playsinline autoplay loop poster="../pr_630_20210717.jpeg">
+					<video width="100%" muted playsinline autoplay loop poster="../pr_630_20210717.jpeg">
 						<source src="../pr_630_20210717.mp4" type="video/mp4" />
+						<track label="video subtitles" kind="subtitles" srclang="kr" src="chrome_subtitles.vtt" default>
 					</video>
 				</a>
 			</div>
@@ -274,7 +337,6 @@
 						<span class="overlay">
 							<a href="#1" class="text" id="myBtn">POPUP</a>
 						</span>
-					</span>
 					</span>
 					<span class="g">
 						<a href="../../images/flower.jpg" target="_blank;">
@@ -311,8 +373,8 @@
 		<div class="snsBox">
 			<a href="http://naver.com" target="_blank;">Naver</a>
 			<a href="http://naver.com">Kakao</a>
-			<a href="http://naver.com"><i class="fab fa-instagram-square"></i></a>
 			<a href="http://naver.com"><i class="fab fa-youtube"></i></a>
+			<a href="http://naver.com"><i class="fab fa-instagram-square"></i></a>
 			<a href="http://naver.com"><i class="fab fa-facebook-square"></i></a>
 		</div>
 		<div class="topBtn"><a href="#">TOP</a></div>

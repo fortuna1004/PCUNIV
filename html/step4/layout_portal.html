@@ -35,49 +35,37 @@
 
 		// -----------------  모달팝업   ----------------- //	
 		jQuery(function($) {
-				// Get the modal
-				var modal = document.getElementById("myModal");
-
-				// Get the button that opens the modal
 				var btn = document.getElementById("myBtn");
-
-				// Get the <span> element that closes the modal
+				var modal = document.getElementById("myModal");
 				var span = document.getElementsByClassName("close")[0];
 
-				// When the user clicks on the button, open the modal
 				btn.onclick = function() {
-				modal.style.display = "block";
+					modal.style.display = "block";
 				}
 
-				// When the user clicks on <span> (x), close the modal
 				span.onclick = function() {
-				modal.style.display = "none";
+					modal.style.display = "none";
 				}
 
-				// When the user clicks anywhere outside of the modal, close it
 				window.onclick = function(event) {
 				if (event.target == modal) {
 					modal.style.display = "none";
 				}
 			}
-		
 		});
+		
 		// -----------------  스와이프   ----------------- //	
 		jQuery(function($) {
 			var swiper = new Swiper(".mySwiper", {
-				effect: "coverflow",
-				grabCursor: true,
-				centeredSlides: true,
-				slidesPerView: "auto",
-				coverflowEffect: {
-				rotate: 50,
-				stretch: 0,
-				depth: 100,
-				modifier: 1,
-					slideShadows: true,
-				},
+				speed: 600,
+				parallax: true,
 				pagination: {
-					el: ".swiper-pagination",
+				el: ".swiper-pagination",
+				clickable: true,
+				},
+				navigation: {
+				nextEl: ".swiper-button-next",
+				prevEl: ".swiper-button-prev",
 				},
 			});
 		});
@@ -141,7 +129,7 @@
 		});
 	</script>
 </head>
-<body class="portal main">
+<body class="portal">
 	<header>
 		<h1 class="logo" onclick="location.href='/html/step3/layout_system.html'">
 			new start 배재 ai,sw 중점대학 로고
@@ -197,38 +185,46 @@
 				<!-- Swiper -->
 				<div class="swiper mySwiper">
 					<div class="swiper-wrapper">
-					  <div class="swiper-slide">
-						<img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-					  </div>
-					  <div class="swiper-slide">
-						<img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-					  </div>
-					  <div class="swiper-slide">
-						<img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-					  </div>
-					  <div class="swiper-slide">
-						<img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-					  </div>
-					  <div class="swiper-slide">
-						<img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-					  </div>
-					  <div class="swiper-slide">
-						<img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-					  </div>
-					  <div class="swiper-slide">
-						<img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-					  </div>
-					  <div class="swiper-slide">
-						<img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-					  </div>
-					  <div class="swiper-slide">
-						<img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-					  </div>
+						<div class="swiper-slide">
+						<div class="title" data-swiper-parallax="-300">Slide 1</div>
+						<div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
+						<div class="text" data-swiper-parallax="-100">
+							<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+							dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
+							laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
+							</p>
+						</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="title" data-swiper-parallax="-300">Slide 2</div>
+							<div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
+							<div class="text" data-swiper-parallax="-100">
+								<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+								dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
+								laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
+								</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="title" data-swiper-parallax="-300">Slide 3</div>
+							<div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
+							<div class="text" data-swiper-parallax="-100">
+								<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+								Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod.
+								Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
+								</p>
+							</div>
+						</div>
 					</div>
+					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev"></div>
 					<div class="swiper-pagination"></div>
 				</div>
 				<a href="https://www.pcu.ac.kr/www/index/index.html" target="_blank;">
-					<video width="100%" id="" onpause="" muted playsinline autoplay loop poster="../pr_630_20210717.jpg">
+					<video width="100%" id="" onpause="" muted playsinline autoplay loop poster="../pr_630_20210717.jpeg">
 						<source src="../pr_630_20210717.mp4" type="video/mp4" />
 					</video>
 				</a>
@@ -236,7 +232,6 @@
 		</section>
 		<section class="center">
 			<div class="cont_2">
-				<h2>그리드</h2>
 				<div class="gridBox">
 					<span class="g">
 						<img src="../../images/flower.jpg"  alt="flower" />
